@@ -1,4 +1,41 @@
+# -*- coding:utf-8 -*-
 
+# 项目的参数配置，包括数据库表（表名、属性名、主键）、维护人员邮箱、需要访问的网站首页以及被封的状态；
+# 如果没有参数没有，比如没有数据库
+
+
+# 数据库信息配置，这里用于连接数据库，各个属性是否必需如下
+DATABASE_INFO = dict(
+    host='localhost',#数据库所在主机，必需
+    user='qianlong',#用户名，必需
+    passwd='962182',#用户密码，必需
+    database='xywy_communication',#数据库名称，必需
+    port=3306,#端口号，必需
+    charset='utf8',#数据库编码方式，必需
+    use_unicode = True,
+)
+
+#设置在www.club.xywy.com页面，每天问题连接页面，共有多少页。
+PAGE_NUMBER = 58
+#设置想抓取哪一年的数据，如果为None，表示抓取所有年份的数据，否则写出年份
+DATA_YEAR = '2016' #表示抓取2016年的数据
+# DATA_YEAR = None #表示抓取全部年份的数据
+
+#配置运行rabbitmq的主机服务器信息
+MASTER_INFO = dict(
+    host='127.0.0.1',
+    port=5672,
+)
+
+#配置ip代理服务器
+PROXIES = [
+    "http://longer:longer@104.194.84.47:3128/",
+    "http://longer:longer@123.206.7.172:3128/",
+    "http://sww1:sww@139.199.30.89:808/",
+    # "http://139.199.33.179:808/",
+    "http://sww:sww@123.206.125.155:808/",
+    "http://sww:sww@119.29.113.89:808/",
+]
 
 USER_AGENTS = [
     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; AcooBrowser; .NET CLR 1.1.4322; .NET CLR 2.0.50727)",
@@ -33,11 +70,3 @@ USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24"
 ]
 
-PROXIES = [
-    "http://longer:longer@104.194.84.47:3128/",
-    "http://longer:longer@123.206.7.172:3128/",
-    "http://sww1:sww@139.199.30.89:808/",
-    # "http://139.199.33.179:808/",
-    "http://sww:sww@123.206.125.155:808/",
-    "http://sww:sww@119.29.113.89:808/",
-]

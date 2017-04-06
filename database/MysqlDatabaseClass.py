@@ -13,7 +13,7 @@ import _mysql_exceptions as ___mysql_exceptions
 import MySQLdb
 import os
 import sys
-from configuration.parameters import DATABASE_INFO as database_info
+from configuration.settings import DATABASE_INFO as database_info
 import MySQLdb.cursors
 from twisted.enterprise import adbapi
 reload(sys)
