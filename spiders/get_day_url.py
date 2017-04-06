@@ -6,10 +6,10 @@ from BaseSpider import BaseSpider
 from database.IOHandler import FileIO
 
 class GetDayUrl(BaseSpider):
-    def __init__(self,url):
+    def __init__(self,url,use_proxy=False):
         self.url = url
         self.selector = self.process_url_request(url=url,xpath_type=True,whether_decode=True,encode_type='GBK',
-                                                 use_proxy=True)
+                                                 use_proxy=use_proxy)
 
     def parse(self):
         try:
