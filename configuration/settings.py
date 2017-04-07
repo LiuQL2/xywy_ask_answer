@@ -15,18 +15,53 @@ DATABASE_INFO = dict(
     use_unicode = True,
 )
 
+
+#配置运行rabbitmq的主机服务器信息
+MASTER_INFO = dict(
+    host='127.0.0.1',
+    port=5672,
+    user='longer',
+    password='longer'
+)
+
+
 #设置在www.club.xywy.com页面，每天问题连接页面，共有多少页。
 PAGE_NUMBER = 58
 #设置想抓取哪一年的数据，如果为None，表示抓取所有年份的数据，否则写出年份
 DATA_YEAR = '2016' #表示抓取2016年的数据
 # DATA_YEAR = None #表示抓取全部年份的数据
 
-#配置运行rabbitmq的主机服务器信息
-MASTER_INFO = dict(
-    host='127.0.0.1',
-    port=5672,
+#用来存储2016年中每一天的queue和exchange信息。http://club.xywy.com/keshi/2016-11-16/1.html
+DAY_URL_QUEUE_EXCHANGE = dict(
+    exchange='2016_day_url_exchange',
+    routing_key = '2016_day_url_routing_key',
+    queue = '2016_day_url_queue',
+    exchange_type='direct',
+    queue_durable=False,
 )
 
+#用来存储每一个页面url的queue和exchange，页面如：http://club.xywy.com/keshi/2016-11-16/3.html
+PAGE_URL_QUEUE_EXCHANGE = dict(
+    exchange='2016_page_url_exchange',
+    routing_key='2016_page_url_routing_key',
+    queue='2016_page_url_queue',
+    exchange_type='direct',
+    queue_durable=False,
+)
+
+#用来保存问题的queue和exchange信息。
+QUESTION_URL_QUEUE_EXCHANGE = dict(
+    exchange='2016_question_exchange',
+    routing_key='2016_question_routing_key',
+    queue='2016_question_queue',
+    exchange_type='direct',
+    queue_durable=False,
+)
+
+
+
+#是否使用代理服务器
+USE_PROXY = True
 #配置ip代理服务器
 PROXIES = [
     "http://longer:longer@104.194.84.47:3128/",
@@ -37,6 +72,8 @@ PROXIES = [
     "http://sww:sww@119.29.113.89:808/",
 ]
 
+
+# User agents
 USER_AGENTS = [
     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; AcooBrowser; .NET CLR 1.1.4322; .NET CLR 2.0.50727)",
     "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; Acoo Browser; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; .NET CLR 3.0.04506)",

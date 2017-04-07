@@ -16,7 +16,6 @@ class GetDayUrl(BaseSpider):
             day_url = self.selector.xpath('//ul[@class="club_Date clearfix"]/li/a/@href')
             return day_url
         except Exception,e:
-            traceback.format_exc(),e.message
             print traceback.format_exc(),e.message
             FileIO.exceptionHandler(message=traceback.format_exc() + '   ' + e.message)
             return None

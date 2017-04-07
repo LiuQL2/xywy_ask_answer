@@ -5,7 +5,9 @@ import pika
 import time
 import datetime
 
-connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost',port=5672))
+# connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost',port=5672))
+connection = pika.BlockingConnection(pika.URLParameters('amqp://longer:longer@127.0.0.1:5672'))
+
 channel = connection.channel()
 
 #定义一个用来接收message的queue，同时为了保证消息不丢失，durable决定该queue进行持久化。
