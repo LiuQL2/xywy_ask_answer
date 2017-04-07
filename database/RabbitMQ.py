@@ -4,12 +4,13 @@
 import pika
 import traceback
 import sys
+import time
 
 from configuration.settings import MASTER_INFO as master_info
 from database.IOHandler import FileIO
 
 
-class ServerHandler(object):
+class RabbitmqServer(object):
     def __init__(self):
         pass
 
@@ -19,11 +20,9 @@ class ServerHandler(object):
             url = 'amqp://' + master_info['user'] + ':' + master_info['password'] + '@' + master_info[
                 'host'] + ':' + str(master_info['port'])
             connection = pika.BlockingConnection(pika.URLParameters(url=url))
-
             channel = connection.channel()
             # 定义一个用来接收message的queue，同时为了保证消息不丢失，durable决定该queue进行持久化。
             channel.queue_declare(queue=queue, durable=queue_durable)
-
             # 定义一个exchange，用来传输message
             if exchange != '':
                 channel.exchange_declare(exchange=exchange, type=exchange_type)
@@ -48,3 +47,32 @@ class ServerHandler(object):
             print traceback.format_exc(),e.message
             FileIO.exceptionHandler(message = traceback.format_exc() + ' ' + e.message)
             sys.exit('Rabbitmq Server Wrong.')
+
+
+class RabbitmqConsumer(object):
+    def __init__(self, queue, queue_durable=False):
+        url = 'amqp://' + master_info['user'] + ':' + master_info['password'] + '@' + master_info['host'] + ':' + str(master_info['port'])
+        self.queue=queue
+        self.queue_durable = queue_durable
+        try:
+            self.connection = pika.BlockingConnection(pika.URLParameters(url=url))
+            self.channel = self.connection.channel()
+            self.channel.queue_declare(queue=queue, durable=queue_durable)
+        except Exception,e:
+            print traceback.format_exc(),e.message
+            FileIO.exceptionHandler(message=traceback.format_exc() + ' ' + e.message)
+            sys.exit(1)
+
+    def callback(self, ch, method, properties, body):
+        print '[X] get url: %s' % body
+        # 每当这个任务完成之后，这个comsumer就会给RabbitMQ发送一个确认信息，确保这个任务不会因该
+        # consumer的突然停止而丢失。
+        ch.basic_ack(delivery_tag=method.delivery_tag)
+        print 'sleeping...'
+        time.sleep(5)
+
+    def start_consuming(self):
+        # 为了让各个worker均衡负载，将prefetch_count设为1。
+        self.channel.basic_qos(prefetch_count=1)  # fair dispatch.
+        self.channel.basic_consume(self.callback, queue=self.queue)
+        self.channel.start_consuming()

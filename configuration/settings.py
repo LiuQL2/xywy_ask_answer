@@ -31,13 +31,19 @@ PAGE_NUMBER = 58
 DATA_YEAR = '2016' #表示抓取2016年的数据
 # DATA_YEAR = None #表示抓取全部年份的数据
 
+#保存最终问题的文件名称
+QUESTION_SAVE_FILE = 'question.json'
+
+#每次访问网站后暂停时间
+TIME_SLEEP = 3
+
 #用来存储2016年中每一天的queue和exchange信息。http://club.xywy.com/keshi/2016-11-16/1.html
 DAY_URL_QUEUE_EXCHANGE = dict(
     exchange='2016_day_url_exchange',
     routing_key = '2016_day_url_routing_key',
     queue = '2016_day_url_queue',
     exchange_type='direct',
-    queue_durable=False,
+    queue_durable=True,
 )
 
 #用来存储每一个页面url的queue和exchange，页面如：http://club.xywy.com/keshi/2016-11-16/3.html
@@ -46,7 +52,7 @@ PAGE_URL_QUEUE_EXCHANGE = dict(
     routing_key='2016_page_url_routing_key',
     queue='2016_page_url_queue',
     exchange_type='direct',
-    queue_durable=False,
+    queue_durable=True,
 )
 
 #用来保存问题的queue和exchange信息。
@@ -55,7 +61,7 @@ QUESTION_URL_QUEUE_EXCHANGE = dict(
     routing_key='2016_question_routing_key',
     queue='2016_question_queue',
     exchange_type='direct',
-    queue_durable=False,
+    queue_durable=True,
 )
 
 

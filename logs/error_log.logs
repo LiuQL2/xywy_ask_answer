@@ -90,3 +90,301 @@ ChannelClosed: (406, "PRECONDITION_FAILED - inequivalent arg 'durable' for queue
 
 [2017-04-07 14:53:24]: 
 
+[2017-04-07 14:54:15]: 
+
+[2017-04-07 14:54:16]: 
+
+[2017-04-07 14:54:47]: 
+
+[2017-04-07 14:55:20]: 
+
+[2017-04-07 14:55:36]: 
+
+[2017-04-07 14:56:16]: 
+
+[2017-04-07 14:58:52]: 
+
+[2017-04-07 14:58:52]: 
+
+[2017-04-07 14:58:52]: 
+
+[2017-04-07 15:22:27]: 
+Traceback (most recent call last):
+  File "D:\Workspace\PyCharmProjects\xywy_ask_answer\database\ServerHandler.py", line 66, in __init__
+    self.channel.queue_declare(queue=queue, durable=queue_durable)
+  File "D:\Program Files\Anaconda2\lib\site-packages\pika\adapters\blocking_connection.py", line 2329, in queue_declare
+    self._flush_output(declare_ok_result.is_ready)
+  File "D:\Program Files\Anaconda2\lib\site-packages\pika\adapters\blocking_connection.py", line 1181, in _flush_output
+    raise exceptions.ChannelClosed(method.reply_code, method.reply_text)
+ChannelClosed: (406, "PRECONDITION_FAILED - inequivalent arg 'durable' for queue '2016_page_url_queue' in vhost '/': received 'false' but current is 'true'")
+ 
+[2017-04-07 15:24:29]: 
+Traceback (most recent call last):
+  File "D:\Workspace\PyCharmProjects\xywy_ask_answer\database\ServerHandler.py", line 66, in __init__
+    self.channel.queue_declare(queue=queue, durable=queue_durable)
+  File "D:\Program Files\Anaconda2\lib\site-packages\pika\adapters\blocking_connection.py", line 2329, in queue_declare
+    self._flush_output(declare_ok_result.is_ready)
+  File "D:\Program Files\Anaconda2\lib\site-packages\pika\adapters\blocking_connection.py", line 1181, in _flush_output
+    raise exceptions.ChannelClosed(method.reply_code, method.reply_text)
+ChannelClosed: (406, "PRECONDITION_FAILED - inequivalent arg 'durable' for queue '2016_page_url_queue' in vhost '/': received 'false' but current is 'true'")
+ 
+[2017-04-07 15:58:32]: 
+
+[2017-04-07 15:58:37]: 
+
+[2017-04-07 16:02:36]: 
+
+[2017-04-07 16:02:36]: 
+
+[2017-04-07 16:02:36]: 
+
+[2017-04-07 16:02:36]: 
+
+[2017-04-07 16:02:36]: 
+
+[2017-04-07 16:02:41]: 
+
+[2017-04-07 16:02:47]: 
+
+[2017-04-07 16:11:05]: 
+
+[2017-04-07 16:11:08]: 
+
+[2017-04-07 16:12:08]: 
+
+[2017-04-07 16:12:20]: 
+
+[2017-04-07 16:24:59]: 
+
+[2017-04-07 16:25:04]: 
+
+[2017-04-07 16:25:07]: 
+
+[2017-04-07 16:25:17]: 
+
+[2017-04-07 16:25:20]: 
+Traceback (most recent call last):
+  File "D:\Workspace\PyCharmProjects\xywy_ask_answer\spiders\ProcessDayUrlSpider.py", line 72, in parse
+    question['disease'] = question_content.xpath('h4/var/a/text()')[0]
+IndexError: list index out of range
+ list index out of range
+[2017-04-07 16:25:24]: 
+
+[2017-04-07 16:25:25]: 
+
+[2017-04-07 16:25:25]: 
+
+[2017-04-07 16:25:28]: 
+
+[2017-04-07 16:25:28]: 
+
+[2017-04-07 16:25:32]: 
+
+[2017-04-07 16:25:32]: 
+
+[2017-04-07 16:25:35]: 
+
+[2017-04-07 16:25:35]: 
+
+[2017-04-07 16:25:35]: 
+
+[2017-04-07 16:25:36]: 
+
+[2017-04-07 16:25:38]: 
+
+[2017-04-07 16:25:38]: 
+
+[2017-04-07 16:25:39]: 
+
+[2017-04-07 16:25:40]: 
+
+[2017-04-07 16:28:26]: 
+
+[2017-04-07 16:28:26]: 
+
+[2017-04-07 16:44:36]: 
+
+[2017-04-07 16:44:36]: 
+
+[2017-04-07 16:44:38]: 
+
+[2017-04-07 16:44:52]: 
+
+[2017-04-07 16:44:52]: 
+
+[2017-04-07 16:45:05]: 
+
+[2017-04-07 16:45:10]: 
+
+[2017-04-07 16:45:11]: 
+
+[2017-04-07 16:45:12]: 
+
+[2017-04-07 16:45:14]: 
+
+[2017-04-07 16:45:16]: 
+
+[2017-04-07 16:45:17]: 
+
+[2017-04-07 16:45:17]: 
+
+[2017-04-07 16:45:23]: 
+
+[2017-04-07 16:45:24]: 
+
+[2017-04-07 16:45:24]: 
+Traceback (most recent call last):
+  File "D:\Workspace\PyCharmProjects\xywy_ask_answer\spiders\ProcessDayUrlSpider.py", line 75, in parse
+    question['question_title'] = question_content.xpath('h4/em/a/text()')[0]
+IndexError: list index out of range
+ list index out of range
+[2017-04-07 16:45:24]: 
+
+[2017-04-07 16:45:29]: 
+
+[2017-04-07 16:45:34]: 
+
+[2017-04-07 16:45:36]: 
+
+[2017-04-07 16:45:41]: 
+
+[2017-04-07 16:45:47]: 
+
+[2017-04-07 16:45:47]: 
+
+[2017-04-07 16:45:49]: 
+
+[2017-04-07 16:45:56]: 
+
+[2017-04-07 16:45:59]: 
+
+[2017-04-07 16:46:00]: 
+
+[2017-04-07 16:46:02]: 
+
+[2017-04-07 16:46:03]: 
+
+[2017-04-07 16:46:09]: 
+
+[2017-04-07 16:46:09]: 
+
+[2017-04-07 16:46:12]: 
+
+[2017-04-07 16:46:18]: 
+
+[2017-04-07 16:46:25]: 
+
+[2017-04-07 16:46:28]: 
+
+[2017-04-07 16:46:37]: 
+
+[2017-04-07 16:46:40]: 
+
+[2017-04-07 16:46:41]: 
+
+[2017-04-07 16:46:43]: 
+
+[2017-04-07 16:46:44]: 
+Traceback (most recent call last):
+  File "D:\Workspace\PyCharmProjects\xywy_ask_answer\spiders\ProcessDayUrlSpider.py", line 72, in parse
+    question['disease'] = question_content.xpath('h4/var/a/text()')[0]
+IndexError: list index out of range
+ list index out of range
+[2017-04-07 16:46:46]: 
+
+[2017-04-07 16:46:49]: 
+
+[2017-04-07 16:46:54]: 
+
+[2017-04-07 16:46:54]: 
+
+[2017-04-07 16:46:57]: 
+
+[2017-04-07 16:47:00]: 
+
+[2017-04-07 16:47:00]: 
+
+[2017-04-07 16:47:02]: 
+
+[2017-04-07 16:47:03]: 
+
+[2017-04-07 16:47:03]: 
+
+[2017-04-07 16:47:06]: 
+
+[2017-04-07 16:47:09]: 
+
+[2017-04-07 16:47:09]: 
+
+[2017-04-07 16:47:13]: 
+
+[2017-04-07 16:47:25]: 
+
+[2017-04-07 16:47:34]: 
+
+[2017-04-07 16:47:44]: 
+
+[2017-04-07 16:47:44]: 
+
+[2017-04-07 16:47:48]: 
+
+[2017-04-07 16:48:01]: 
+
+[2017-04-07 16:48:01]: 
+
+[2017-04-07 16:48:02]: 
+
+[2017-04-07 16:48:03]: 
+
+[2017-04-07 16:48:04]: 
+
+[2017-04-07 16:48:11]: 
+
+[2017-04-07 16:48:11]: 
+
+[2017-04-07 16:48:12]: 
+
+[2017-04-07 16:48:12]: 
+
+[2017-04-07 16:48:14]: 
+
+[2017-04-07 16:48:14]: 
+
+[2017-04-07 16:48:17]: 
+
+[2017-04-07 16:48:17]: 
+
+[2017-04-07 16:48:18]: 
+
+[2017-04-07 16:48:19]: 
+
+[2017-04-07 16:48:23]: 
+
+[2017-04-07 16:48:23]: 
+
+[2017-04-07 16:48:23]: 
+
+[2017-04-07 16:48:32]: 
+
+[2017-04-07 16:48:33]: 
+
+[2017-04-07 16:48:33]: 
+
+[2017-04-07 16:49:14]: 
+
+[2017-04-07 17:45:13]: 
+
+[2017-04-07 17:45:13]: 
+
+[2017-04-07 17:46:06]: 
+
+[2017-04-07 17:46:13]: 
+
+[2017-04-07 17:46:40]: 
+
+[2017-04-07 17:46:40]: 
+
+[2017-04-07 17:47:53]: 
+
+[2017-04-07 17:47:58]: 
+
