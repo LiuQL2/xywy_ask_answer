@@ -1,5 +1,5 @@
 .idea/
-
+**/*.json
 **/*.py[co]
 **/*.log
-**/*.json
+**/*.logs
