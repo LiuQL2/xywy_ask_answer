@@ -18,7 +18,7 @@ SqliteDatabaseClass:对sqlite数据库进行操作；
 ## (4) logs
 保存日志文件，主要是错误信息
 ## （5） producer
-用来产生每一天的页面连接，保存到RabbitMQ服务器中。
+day_url_producer:用来产生每一天的页面连接，保存到RabbitMQ服务器中。
 ## （6） result
 保存数据的目录
 ## （7） spiders
@@ -26,3 +26,14 @@ SqliteDatabaseClass:对sqlite数据库进行操作；
 BaseSpider:基础的爬虫，实现对网站的访问等功能；
 GetDayUrlSpider:获取每一天url的爬虫；
 ProcessDayUrlSpider:处理每一天的url，包括两部分：a.从一天url中获取这一天所有问题的页面；b.从一个页面中获取该页面下所有的问题信息；
+
+# 2.使用说明
+(1)配置好setting.py文件；
+(2)启动RabbitMQ服务器；
+(3)首先运行day_url_producer,且只运行一次即可,不要重复运行;
+(4)运行day_url_producer,可以运行多个，可结束重新运行；
+(5)运行page_url_consumer,因为page url数量太多，所以这部分工作量最大，建议运行多个改程序；
+(6)运行quesiton_consumer,运行一个即可满足需求；
+
+# 3. 分布式部署
+......
