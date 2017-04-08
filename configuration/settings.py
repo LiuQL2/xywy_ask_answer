@@ -70,12 +70,7 @@ QUESTION_URL_QUEUE_EXCHANGE = dict(
 USE_PROXY = True
 #配置ip代理服务器
 PROXIES = [
-    "http://longer:longer@104.194.84.47:3128/",
-    "http://longer:longer@123.206.7.172:3128/",
-    "http://sww1:sww@139.199.30.89:808/",
-    # "http://139.199.33.179:808/",
-    "http://sww:sww@123.206.125.155:808/",
-    "http://sww:sww@119.29.113.89:808/",
+
 ]
 
 
