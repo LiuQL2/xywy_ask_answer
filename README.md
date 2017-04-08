@@ -6,7 +6,7 @@ Distributed crawler for www.club.xywy.com.
 配置该爬虫的相关信息，以及一些访问设置，包括访问速度、代理服务器、RabbitMQ中保存数据的队列名称等。
 ## (2) consumer
 里面包含三个consumer
-day_url_consumer,用来处理每一天的url连接，并获得该日期下所有页面的url，同时调用ProcessDayUrl.ProcessDayUrl爬虫将结果保存到RabbitMQ；
+day_url_consumer,用来处理每一天的url连接，并获得该日期下所有页面的url，同时调用ProcessDayUrl.ProcessDayUrl爬虫将结果保存到RabbitMQ；\n
 page_url_consumer,用来处理每一个页面的url，每一个页面包含20条问题信息，获得问题信息后调用ProcessDayUrl.GetOnePageQuestion爬虫，将问题信息保存到RabbitMQ;
 question_consumer,用来将RabbitMQ中的问题信息数据保存到本地文件;
 ## (3) database
