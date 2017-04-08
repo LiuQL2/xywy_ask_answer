@@ -18,20 +18,20 @@ DATABASE_INFO = dict(
 
 #配置运行rabbitmq的主机服务器信息
 MASTER_INFO = dict(
-    host='127.0.0.1',
-    port=5672,
-    user='longer',
-    password='longer'
+    host='127.0.0.1',#rabbitmq服务器ip，必需
+    port=5672,#rabbitmq服务器端口号，必需
+    user='longer',#rabbitmq服务器用户名，必需
+    password='longer'#rabbitmq服务器用户密码，必需
 )
 
 
-#设置在www.club.xywy.com页面，每天问题连接页面，共有多少页。
+#设置在http://club.xywy.com/keshi/1.html页面，每天问题连接页面，共有多少页。
 PAGE_NUMBER = 58
 #设置想抓取哪一年的数据，如果为None，表示抓取所有年份的数据，否则写出年份
 DATA_YEAR = '2016' #表示抓取2016年的数据
 # DATA_YEAR = None #表示抓取全部年份的数据
 
-#保存最终问题的文件名称
+#保存最终问题的文件名称,文件将保存到本项目下result文件夹中。每次都是追加内容，不会删除之前的数据，运行爬虫需要注意
 QUESTION_SAVE_FILE = 'question.json'
 
 #每次访问网站后暂停时间
@@ -67,7 +67,7 @@ QUESTION_URL_QUEUE_EXCHANGE = dict(
 
 
 #是否使用代理服务器
-USE_PROXY = True
+USE_PROXY = False
 #配置ip代理服务器
 PROXIES = [
 
