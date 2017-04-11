@@ -79,7 +79,10 @@ class GetOnePageQuestion(BaseSpider):
                 question['disease_url'] = question_content.xpath('h4/var/a/@href')[0]
                 question['question_url'] = question_content.xpath('h4/em/a/@href')[0]
                 question['question_title'] = question_content.xpath('h4/em/a/text()')[0]
-                question['question_body'] = question_content.xpath('div/p/text()')[0]
+                try:
+                    question['question_body'] = question_content.xpath('div/p/text()')[0]
+                except:
+                    question['question_body'] = ''
                 day_question_list.append(question)
                 #将抓取的问题信息保存到对应的queue中。
                 RabbitmqServer.add_message(message=json.dumps(question),

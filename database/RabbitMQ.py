@@ -132,3 +132,6 @@ class RabbitmqConsumer(object):
         self.channel.basic_qos(prefetch_count=1)  # fair dispatch.
         self.channel.basic_consume(self.callback, queue=self.queue)
         self.channel.start_consuming()
+
+if __name__ == "__main__":
+    RabbitmqServer.queue_delete(queue='2016_question_queue')
