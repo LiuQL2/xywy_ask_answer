@@ -75,10 +75,20 @@ class GetOnePageQuestion(BaseSpider):
             question_content_list = self.selector.xpath('//div[@class="bc mt15 DiCeng"]/div[@class="club_dic"]')
             for question_content in question_content_list:
                 question = {}
-                question['disease'] = question_content.xpath('h4/var/a/text()')[0]
-                question['disease_url'] = question_content.xpath('h4/var/a/@href')[0]
-                question['question_url'] = question_content.xpath('h4/em/a/@href')[0]
-                question['question_title'] = question_content.xpath('h4/em/a/text()')[0]
+                try:
+                    question['disease'] = question_content.xpath('h4/var/a/text()')[0]
+                    question['disease_url'] = question_content.xpath('h4/var/a/@href')[0]
+                except:
+                    question['disease'] = ''
+                    question['disease_url'] = ''
+
+                try:
+                    question['question_url'] = question_content.xpath('h4/em/a/@href')[0]
+                    question['question_title'] = question_content.xpath('h4/em/a/text()')[0]
+                except:
+                    question['question_url'] = ''
+                    question['question_title'] = ''
+
                 try:
                     question['question_body'] = question_content.xpath('div/p/text()')[0]
                 except:
