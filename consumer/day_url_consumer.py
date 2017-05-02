@@ -26,7 +26,7 @@ class DayUrlConsumer(RabbitmqConsumer):
         # consumer的突然停止而丢失。
         ch.basic_ack(delivery_tag=method.delivery_tag)
         print 'sleeping...'
-        time.sleep(time_sleep)
+        self.connection.sleep(time_sleep)
 
 
 if __name__ == '__main__':
