@@ -2,17 +2,22 @@
 
 # 项目的参数配置，包括数据库表（表名、属性名、主键）、维护人员邮箱、需要访问的网站首页以及被封的状态；
 # 如果没有参数没有，比如没有数据库
-
+import pika
 
 # 数据库信息配置，这里用于连接数据库，各个属性是否必需如下
 DATABASE_INFO = dict(
     host='localhost',#数据库所在主机，必需
     user='qianlong',#用户名，必需
     passwd='962182',#用户密码，必需
-    database='xywy_communication',#数据库名称，必需
+    database='xywy_fudan',#数据库名称，必需
     port=3306,#端口号，必需
     charset='utf8',#数据库编码方式，必需
     use_unicode = True,
+)
+
+MongoDB_INFO= dict(
+    host = 'localhost',
+    port = 27017
 )
 
 
@@ -22,6 +27,13 @@ MASTER_INFO = dict(
     port=5672,#rabbitmq服务器端口号，必需
     user='longer',#rabbitmq服务器用户名，必需
     password='longer'#rabbitmq服务器用户密码，必需
+)
+
+RABBITMQ_CONNECTION_PARA = pika.ConnectionParameters(
+    host='localhost',
+    port=5672,
+    credentials=pika.PlainCredentials(username='longer',password='longer'),
+    heartbeat_interval=0
 )
 
 
@@ -64,13 +76,26 @@ QUESTION_URL_QUEUE_EXCHANGE = dict(
     queue_durable=True,
 )
 
-
+DISEASE_URL_QUEUE_EXCHANGE = dict(
+    exchange = 'disease_url_exchange',
+    routing_key = 'disease_url_routing_key',
+    queue = 'disease_url_queue',
+    exchange_type = 'direct',
+    queue_durable = True,
+)
 
 #是否使用代理服务器
-USE_PROXY = False
+USE_PROXY = True
 #配置ip代理服务器
 PROXIES = [
-
+    "http://longer:longer@23.105.203.94:3128/",
+    "http://longer:longer@138.128.195.139:3128/",
+    "http://longer:longer@23.105.212.43:3128/",
+    "http://longer:longer@104.194.84.47:3128/",
+    "http://longer:longer@123.206.7.172:3128/",
+    "http://sww:sww@139.199.30.89:808/",
+    "http://sww:sww@123.206.125.155:808/",
+    "http://sww:sww@119.29.113.89:808/",
 ]
 
 

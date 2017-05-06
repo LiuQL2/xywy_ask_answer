@@ -6,7 +6,7 @@ import traceback
 import sys
 import time
 
-from configuration.settings import MASTER_INFO as master_info
+from configuration.settings import RABBITMQ_CONNECTION_PARA as connection_parameter
 from database.IOHandler import FileIO
 
 
@@ -20,9 +20,7 @@ class RabbitmqServer(object):
         for index in range(0, try_number, 1):
             print 'number', index
             try:
-                url = 'amqp://' + master_info['user'] + ':' + master_info['password'] + '@' + master_info[
-                    'host'] + ':' + str(master_info['port'])
-                connection = pika.BlockingConnection(pika.URLParameters(url=url))
+                connection = pika.BlockingConnection(connection_parameter)
                 success = True
                 return connection
             except Exception,e:
@@ -96,13 +94,12 @@ class RabbitmqServer(object):
 
 class RabbitmqConsumer(object):
     def __init__(self, queue, queue_durable=False,try_number=100):
-        url = 'amqp://' + master_info['user'] + ':' + master_info['password'] + '@' + master_info['host'] + ':' + str(master_info['port'])
         self.queue=queue
         self.queue_durable = queue_durable
         success = False
         for index in range(0, try_number,1):
             try:
-                self.connection = pika.BlockingConnection(pika.URLParameters(url=url))
+                self.connection = pika.BlockingConnection(connection_parameter)
                 self.channel = self.connection.channel()
                 self.channel.queue_declare(queue=queue, durable=queue_durable)
                 success = True
