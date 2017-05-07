@@ -93,6 +93,9 @@ class GetOnePageQuestion(BaseSpider):
                     question['question_body'] = question_content.xpath('div/p/text()')[0]
                 except:
                     question['question_body'] = ''
+                post_date = self.url.split('/')[4]
+                question['post_date'] = post_date
+                question['post_month'] = post_date[0:7]
                 day_question_list.append(question)
                 #将抓取的问题信息保存到对应的queue中。
                 RabbitmqServer.add_message(message=json.dumps(question),
