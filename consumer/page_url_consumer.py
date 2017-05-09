@@ -25,6 +25,7 @@ class PageUrlConsumer(RabbitmqConsumer):
         get_one_page_question.parse()#该方法将获得的20个问题信息保存到rabbitmq服务器上对应的queue中。
         ch.basic_ack(delivery_tag=method.delivery_tag)
         print 'sleeping..',datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        self.connection.sleep(time_sleep)
 
 
 if __name__ == '__main__':
