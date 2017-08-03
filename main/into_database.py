@@ -4,10 +4,13 @@
 import json
 import os
 import sys
-from database.MysqlDatabaseClass import MySQLDatabaseClass
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
+sys.path.append(os.getcwd().replace("main",""))
+
+from database.MysqlDatabaseClass import MySQLDatabaseClass
+
 
 
 def into_database(file_name):

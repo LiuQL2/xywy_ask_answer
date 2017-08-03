@@ -1,7 +1,10 @@
 # /usr/bin/env python
 # -*- coding:utf-8 -*-
 
-import time
+import os
+import sys
+sys.path.append(os.getcwd().replace("consumer",""))
+
 import datetime
 import pika.exceptions
 

@@ -23,14 +23,14 @@ MongoDB_INFO= dict(
 
 #配置运行rabbitmq的主机服务器信息
 MASTER_INFO = dict(
-    host='127.0.0.1',#rabbitmq服务器ip，必需
+    host='10.88.12.45',#rabbitmq服务器ip，必需
     port=5672,#rabbitmq服务器端口号，必需
     user='longer',#rabbitmq服务器用户名，必需
     password='longer'#rabbitmq服务器用户密码，必需
 )
 
 RABBITMQ_CONNECTION_PARA = pika.ConnectionParameters(
-    host='localhost',
+    host='10.88.12.45',
     port=5672,
     credentials=pika.PlainCredentials(username='longer',password='longer'),
     heartbeat_interval=0
@@ -40,38 +40,38 @@ RABBITMQ_CONNECTION_PARA = pika.ConnectionParameters(
 #设置在http://club.xywy.com/keshi/1.html页面，每天问题连接页面，共有多少页。
 PAGE_NUMBER = 58
 #设置想抓取哪一年的数据，如果为None，表示抓取所有年份的数据，否则写出年份
-DATA_YEAR = '2016' #表示抓取2016年的数据
+DATA_YEAR = '2013' #表示抓取2013年的数据
 # DATA_YEAR = None #表示抓取全部年份的数据
 
 #保存最终问题的文件名称,文件将保存到本项目下result文件夹中。每次都是追加内容，不会删除之前的数据，运行爬虫需要注意
-QUESTION_SAVE_FILE = 'question.json'
+QUESTION_SAVE_FILE = '2013_question.json'
 
 #每次访问网站后暂停时间
 TIME_SLEEP = 3
 
-#用来存储2016年中每一天的queue和exchange信息。http://club.xywy.com/keshi/2016-11-16/1.html
+#用来存储2013年中每一天的queue和exchange信息。http://club.xywy.com/keshi/2013-11-16/1.html
 DAY_URL_QUEUE_EXCHANGE = dict(
-    exchange='2016_day_url_exchange',
-    routing_key = '2016_day_url_routing_key',
-    queue = '2016_day_url_queue',
+    exchange='2013_day_url_exchange',
+    routing_key = '2013_day_url_routing_key',
+    queue = '2013_day_url_queue',
     exchange_type='direct',
     queue_durable=True,
 )
 
-#用来存储每一个页面url的queue和exchange，页面如：http://club.xywy.com/keshi/2016-11-16/3.html
+#用来存储每一个页面url的queue和exchange，页面如：http://club.xywy.com/keshi/2013-11-16/3.html
 PAGE_URL_QUEUE_EXCHANGE = dict(
-    exchange='2016_page_url_exchange',
-    routing_key='2016_page_url_routing_key',
-    queue='2016_page_url_queue',
+    exchange='2013_page_url_exchange',
+    routing_key='2013_page_url_routing_key',
+    queue='2013_page_url_queue',
     exchange_type='direct',
     queue_durable=True,
 )
 
 #用来保存问题的queue和exchange信息。
 QUESTION_URL_QUEUE_EXCHANGE = dict(
-    exchange='2016_question_exchange',
-    routing_key='2016_question_routing_key',
-    queue='2016_question_queue',
+    exchange='2013_question_exchange',
+    routing_key='2013_question_routing_key',
+    queue='2013_question_queue',
     exchange_type='direct',
     queue_durable=True,
 )
@@ -85,17 +85,10 @@ DISEASE_URL_QUEUE_EXCHANGE = dict(
 )
 
 #是否使用代理服务器
-USE_PROXY = True
+USE_PROXY = False
 #配置ip代理服务器
 PROXIES = [
-    "http://longer:longer@23.105.203.94:3128/",
-    "http://longer:longer@138.128.195.139:3128/",
-    "http://longer:longer@23.105.212.43:3128/",
-    "http://longer:longer@104.194.84.47:3128/",
-    "http://longer:longer@123.206.7.172:3128/",
-    "http://sww:sww@139.199.30.89:808/",
-    "http://sww:sww@123.206.125.155:808/",
-    "http://sww:sww@119.29.113.89:808/",
+
 ]
 
 

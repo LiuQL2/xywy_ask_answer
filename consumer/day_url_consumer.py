@@ -1,12 +1,14 @@
 # /usr/bin/env python
 # -*-coding:utf-8 -*-
 
-import time
+import sys
+import os
+sys.path.append(os.getcwd().replace("consumer",""))
 
-from configuration.settings import DAY_URL_QUEUE_EXCHANGE as day_url_queue_exchange
-from configuration.settings import USE_PROXY as use_proxy
-from configuration.settings import TIME_SLEEP as time_sleep
-from database.RabbitMQ import RabbitmqConsumer
+from configuration import DAY_URL_QUEUE_EXCHANGE as day_url_queue_exchange
+from configuration import USE_PROXY as use_proxy
+from configuration import TIME_SLEEP as time_sleep
+from database import RabbitmqConsumer
 from spiders.ProcessDayUrlSpider import ProcessDayUrl
 
 

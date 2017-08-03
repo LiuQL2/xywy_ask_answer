@@ -11,11 +11,13 @@
 import random
 import socket
 import sys
+import os
 import urllib2
 from urllib2 import URLError
 import traceback
 
 import lxml.etree
+sys.path.append(os.getcwd().replace("spiders",""))
 
 from configuration.settings import USER_AGENTS as user_agents
 from database.IOHandler import FileIO

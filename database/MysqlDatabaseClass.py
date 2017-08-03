@@ -11,13 +11,16 @@
 
 import _mysql_exceptions as ___mysql_exceptions
 import MySQLdb
+import MySQLdb.cursors
 import os
 import sys
-from configuration.settings import DATABASE_INFO as database_info
-import MySQLdb.cursors
-from twisted.enterprise import adbapi
+sys.path.append(os.getcwd().replace("database",""))
 reload(sys)
 sys.setdefaultencoding('utf-8')
+
+from configuration.settings import DATABASE_INFO as database_info
+
+
 
 
 class MySQLDatabaseClass(object):

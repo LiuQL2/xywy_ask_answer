@@ -7,6 +7,9 @@ import datetime
 import sys
 import traceback
 import json
+import os
+import sys
+sys.path.append(os.getcwd().replace("statistic",""))
 
 from database.IOHandler import FileIO
 from configuration.settings import MongoDB_INFO as mongoDB_info

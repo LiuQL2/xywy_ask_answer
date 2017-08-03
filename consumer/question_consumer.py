@@ -1,10 +1,12 @@
 # /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import json
+import os
+import sys
+sys.path.append("consumer","")
 
-from database.RabbitMQ import RabbitmqConsumer
-from database.IOHandler import FileIO
+from database import RabbitmqConsumer
+from database import FileIO
 from configuration.settings import QUESTION_SAVE_FILE as question_save_file
 from configuration.settings import QUESTION_URL_QUEUE_EXCHANGE as question_queue_exchange
 

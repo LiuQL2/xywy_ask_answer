@@ -2,6 +2,9 @@
 
 import json
 import sys
+import os
+sys.path.append(os.getcwd().replace("statistic",""))
+
 from database.IOHandler import FileIO
 
 reload(sys)

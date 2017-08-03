@@ -3,6 +3,9 @@
 
 import pika
 import json
+import os
+import sys
+sys.path.append(os.getcwd().replace("producer",""))
 
 from configuration.settings import PAGE_NUMBER as page_number
 from configuration.settings import DATA_YEAR as data_year

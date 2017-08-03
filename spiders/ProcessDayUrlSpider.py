@@ -4,6 +4,9 @@
 import re
 import traceback
 import json
+import sys
+import os
+sys.path.append(os.getcwd().replace("spiders",""))
 
 from BaseSpider import BaseSpider
 from database.IOHandler import FileIO

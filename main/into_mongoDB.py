@@ -4,7 +4,9 @@
 from pymongo import MongoClient
 import datetime
 import traceback
-import json
+import sys
+import os
+sys.path.append(os.getcwd().replace("main",""))
 
 from database.RabbitMQ import RabbitmqServer
 from configuration.settings import DISEASE_URL_QUEUE_EXCHANGE as disease_url_queue_exchange

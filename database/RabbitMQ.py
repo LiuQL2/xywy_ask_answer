@@ -3,11 +3,13 @@
 
 import pika
 import traceback
-import sys
+import os
 import time
+import sys
+sys.path.append(os.getcwd().replace("database",""))
 
 from configuration.settings import RABBITMQ_CONNECTION_PARA as connection_parameter
-from database.IOHandler import FileIO
+from IOHandler import FileIO
 
 
 class RabbitmqServer(object):
@@ -131,4 +133,12 @@ class RabbitmqConsumer(object):
         self.channel.start_consuming()
 
 if __name__ == "__main__":
-    RabbitmqServer.queue_delete(queue='2016_question_queue')
+    # RabbitmqServer.queue_delete(queue='2016_question_queue')
+    # RabbitmqServer.queue_delete(queue='post_url_queue')
+    # RabbitmqServer.queue_delete(queue='pubmed_article_queue')
+
+    # connection = RabbitmqServer.get_connection()
+    # channel = connection.channel()
+    # channel.queue_declare(queue="test", durable=False)
+    # sys.path.append(os.getcwd())
+    print os.getcwd()
