@@ -21,18 +21,10 @@ MongoDB_INFO= dict(
 )
 
 
-#配置运行rabbitmq的主机服务器信息
-MASTER_INFO = dict(
-    host='10.88.12.45',#rabbitmq服务器ip，必需
-    port=5672,#rabbitmq服务器端口号，必需
-    user='longer',#rabbitmq服务器用户名，必需
-    password='longer'#rabbitmq服务器用户密码，必需
-)
-
 RABBITMQ_CONNECTION_PARA = pika.ConnectionParameters(
-    host='10.88.12.45',
+    host='localhost',
     port=5672,
-    credentials=pika.PlainCredentials(username='longer',password='longer'),
+    credentials=pika.PlainCredentials(username='username',password='password'),
     heartbeat_interval=0
 )
 
@@ -85,10 +77,10 @@ DISEASE_URL_QUEUE_EXCHANGE = dict(
 )
 
 #是否使用代理服务器
-USE_PROXY = False
+USE_PROXY = True
 #配置ip代理服务器
 PROXIES = [
-
+    "http://username:password@your_proxy_ip:port/",
 ]
 
 
