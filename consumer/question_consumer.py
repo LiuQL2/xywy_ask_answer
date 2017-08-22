@@ -3,12 +3,13 @@
 
 import os
 import sys
-sys.path.append("consumer","")
+sys.path.append(os.getcwd().replace("consumer",""))
 
 from database import RabbitmqConsumer
 from database import FileIO
 from configuration.settings import QUESTION_SAVE_FILE as question_save_file
 from configuration.settings import QUESTION_URL_QUEUE_EXCHANGE as question_queue_exchange
+from configuration.settings import DATA_YEAR as data_year
 
 
 class QuestionConsumer(RabbitmqConsumer):
@@ -19,7 +20,7 @@ class QuestionConsumer(RabbitmqConsumer):
         super(QuestionConsumer,self).__init__(queue=queue,queue_durable=queue_durable)
 
     def callback(self,ch,method,properties, body):
-        question_file = './../result/' + question_save_file
+        question_file = '/mnt/qianlong/data/xywy/' + data_year + "/" + question_save_file
         print type(body), body
         FileIO.writeToFile(text=body,filename=question_file)
         ch.basic_ack(delivery_tag=method.delivery_tag)

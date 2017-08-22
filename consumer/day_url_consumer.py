@@ -3,6 +3,7 @@
 
 import sys
 import os
+import json
 sys.path.append(os.getcwd().replace("consumer",""))
 
 from configuration import DAY_URL_QUEUE_EXCHANGE as day_url_queue_exchange
@@ -21,8 +22,9 @@ class DayUrlConsumer(RabbitmqConsumer):
 
     def callback(self, ch, method, properties, body):
         print '[X] get url: %s' % body
+        url_count = json.loads(body)
         #将该日期的url读取出来，获得该日期下所有页面的url，一个页面包含20个问题。
-        process_day_url = ProcessDayUrl(url = body,use_proxy=use_proxy)
+        process_day_url = ProcessDayUrl(url_count = url_count,use_proxy=use_proxy)
         process_day_url.parse()#该方法将获得页面url保存到rabbitmq服务器对应的队列中。
         # 每当这个任务完成之后，这个comsumer就会给RabbitMQ发送一个确认信息，确保这个任务不会因该
         # consumer的突然停止而丢失。

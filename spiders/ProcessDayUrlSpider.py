@@ -20,11 +20,13 @@ class ProcessDayUrl(BaseSpider):
     """
     用来处理某一天url的爬虫，主要是获得该日期下每一个页面的url，并将每一个页面的url保存到rabbitmq服务器中。
     """
-    def __init__(self,url,use_proxy=False):
-        self.url = url
+    def __init__(self,url_count,use_proxy=False):
+        self.url_count = url_count
         self.use_proxy = use_proxy
-        self.selector = self.process_url_request(url=self.url,xpath_type=True,whether_decode=True,
+        self.selector = self.process_url_request(url=self.url_count['url'],xpath_type=True,whether_decode=True,
                                                  encode_type='GBK',use_proxy=use_proxy)
+        try_number = int(self.url_count['try_number'])
+        self.url_count['try_number'] = try_number + 1
 
     def parse(self):
         """
@@ -36,13 +38,16 @@ class ProcessDayUrl(BaseSpider):
             mode = re.compile(r'\d+')
             page_numer = (mode.findall(page_numer_content)[0]).encode('utf-8')
             page_numer = int(page_numer)
-            print self.url, type(page_numer), page_numer
-            url_preffix = self.url[0:len(self.url) - 6]
+            print self.url_count['url'], type(page_numer), page_numer
+            url_preffix = self.url_count['url'][0:len(self.url_count['url']) - 6]
             # 成功获取页面数，将页面url保存到对应的queue中
             for number in range(1, page_numer + 1, 1):
                 url = url_preffix + str(number) + '.html'
                 print 'page url:', url
-                RabbitmqServer.add_message(message=url,
+                url_count = {}
+                url_count['url'] = url
+                url_count['try_number'] = 0
+                RabbitmqServer.add_message(message=json.dumps(url_count),
                                           routing_key=page_queue_exchange['routing_key'],
                                           queue=page_queue_exchange['queue'],
                                           queue_durable=page_queue_exchange['queue_durable'],
@@ -51,14 +56,17 @@ class ProcessDayUrl(BaseSpider):
         except Exception,e:
             print traceback.format_exc(),e.message
             FileIO.exceptionHandler(message=traceback.format_exc() + ' ' + e.message)
-            # 本次失败，将这一天的url重新放回保存日期url的queue中，等待下一次尝试。
-            RabbitmqServer.add_message(message=self.url,
-                                      routing_key=day_queue_exchange['routing_key'],
-                                      queue=day_queue_exchange['queue'],
-                                      queue_durable=day_queue_exchange['queue_durable'],
-                                      exchange=day_queue_exchange['exchange'],
-                                      exchange_type=day_queue_exchange['exchange_type']
-                                       )
+            # 本次失败且尝试次数小于10次，将这一天的url重新放回保存日期url的queue中，等待下一次尝试。
+            if self.url_count['try_number'] <= 10:
+                RabbitmqServer.add_message(message=json.dumps(self.url_count),
+                                          routing_key=day_queue_exchange['routing_key'],
+                                          queue=day_queue_exchange['queue'],
+                                          queue_durable=day_queue_exchange['queue_durable'],
+                                          exchange=day_queue_exchange['exchange'],
+                                          exchange_type=day_queue_exchange['exchange_type']
+                                           )
+            else:
+                pass
 
 
 
@@ -67,10 +75,12 @@ class GetOnePageQuestion(BaseSpider):
     """
     用来处理一个页面的url，这里一个页面有20个问题，将抓取到的问题保存到rabbitmq服务器中。
     """
-    def __init__(self,url,use_proxy=False):
-        self.url = url
-        self.selector = self.process_url_request(url=self.url,xpath_type=True,whether_decode=True,
+    def __init__(self,url_count,use_proxy=False):
+        self.url_count = url_count
+        self.selector = self.process_url_request(url=self.url_count['url'],xpath_type=True,whether_decode=True,
                                                  encode_type='GBK',use_proxy=use_proxy)
+        try_number = int(self.url_count['try_number'])
+        self.url_count['try_number'] = try_number + 1
 
     def parse(self):
         day_question_list = []
@@ -96,7 +106,7 @@ class GetOnePageQuestion(BaseSpider):
                     question['question_body'] = question_content.xpath('div/p/text()')[0]
                 except:
                     question['question_body'] = ''
-                post_date = self.url.split('/')[4]
+                post_date = self.url_count['url'].split('/')[4]
                 question['post_date'] = post_date
                 question['post_month'] = post_date[0:7]
                 day_question_list.append(question)
@@ -110,10 +120,13 @@ class GetOnePageQuestion(BaseSpider):
         except Exception, e:
             print traceback.format_exc(),e.message
             FileIO.exceptionHandler(message=traceback.format_exc() + ' ' + e.message)
-            #本次尝试失败，将这个页面的url放回原来的queue中，待下一次尝试。
-            RabbitmqServer.add_message(message=self.url,
-                                      routing_key=page_queue_exchange['routing_key'],
-                                      queue=page_queue_exchange['queue'],
-                                      queue_durable=page_queue_exchange['queue_durable'],
-                                      exchange=page_queue_exchange['exchange'],
-                                      exchange_type=page_queue_exchange['exchange_type'])
+            #本次尝试失败且尝试次数小于10次，将这个页面的url放回原来的queue中，待下一次尝试。
+            if int(self.url_count['try_number']) <= 10:
+                RabbitmqServer.add_message(message=self.url_count,
+                                          routing_key=page_queue_exchange['routing_key'],
+                                          queue=page_queue_exchange['queue'],
+                                          queue_durable=page_queue_exchange['queue_durable'],
+                                          exchange=page_queue_exchange['exchange'],
+                                          exchange_type=page_queue_exchange['exchange_type'])
+            else:
+                pass

@@ -133,7 +133,7 @@ class RabbitmqConsumer(object):
         self.channel.start_consuming()
 
 if __name__ == "__main__":
-    # RabbitmqServer.queue_delete(queue='2016_question_queue')
+    RabbitmqServer.queue_delete(queue='2013_day_url_queue')
     # RabbitmqServer.queue_delete(queue='post_url_queue')
     # RabbitmqServer.queue_delete(queue='pubmed_article_queue')
 
@@ -141,4 +141,4 @@ if __name__ == "__main__":
     # channel = connection.channel()
     # channel.queue_declare(queue="test", durable=False)
     # sys.path.append(os.getcwd())
-    print os.getcwd()
+    # print os.getcwd()

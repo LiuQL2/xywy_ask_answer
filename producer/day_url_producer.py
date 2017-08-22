@@ -36,7 +36,10 @@ class DayUrlProducer(object):
                 if data_year in day_url:
                     url_list.append(day_url)
                     print day_url
-                    RabbitmqServer.add_message(message=day_url,
+                    url_count = {}
+                    url_count['url'] = day_url
+                    url_count['try_number'] = 0
+                    RabbitmqServer.add_message(message=json.dumps(url_count),
                                               routing_key=self.routing_key,
                                               queue=self.queue,
                                               queue_durable=self.queue_durable,
