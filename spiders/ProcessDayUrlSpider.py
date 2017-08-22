@@ -14,6 +14,7 @@ from database.RabbitMQ import RabbitmqServer
 from configuration.settings import DAY_URL_QUEUE_EXCHANGE as day_queue_exchange
 from configuration.settings import PAGE_URL_QUEUE_EXCHANGE as page_queue_exchange
 from configuration.settings import QUESTION_URL_QUEUE_EXCHANGE as question_queue_exchange
+from configuration.settings import URL_TRY_NUMBER as url_try_number
 
 
 class ProcessDayUrl(BaseSpider):
@@ -57,7 +58,7 @@ class ProcessDayUrl(BaseSpider):
             print traceback.format_exc(),e.message
             FileIO.exceptionHandler(message=traceback.format_exc() + ' ' + e.message)
             # 本次失败且尝试次数小于10次，将这一天的url重新放回保存日期url的queue中，等待下一次尝试。
-            if self.url_count['try_number'] <= 10:
+            if self.url_count['try_number'] <= url_try_number:
                 RabbitmqServer.add_message(message=json.dumps(self.url_count),
                                           routing_key=day_queue_exchange['routing_key'],
                                           queue=day_queue_exchange['queue'],
@@ -121,7 +122,7 @@ class GetOnePageQuestion(BaseSpider):
             print traceback.format_exc(),e.message
             FileIO.exceptionHandler(message=traceback.format_exc() + ' ' + e.message)
             #本次尝试失败且尝试次数小于10次，将这个页面的url放回原来的queue中，待下一次尝试。
-            if int(self.url_count['try_number']) <= 10:
+            if int(self.url_count['try_number']) <= url_try_number:
                 RabbitmqServer.add_message(message=self.url_count,
                                           routing_key=page_queue_exchange['routing_key'],
                                           queue=page_queue_exchange['queue'],

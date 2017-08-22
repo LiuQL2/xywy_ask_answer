@@ -21,49 +21,52 @@ MongoDB_INFO= dict(
 )
 
 
+#配置运行rabbitmq的主机服务器信息
 RABBITMQ_CONNECTION_PARA = pika.ConnectionParameters(
     host='localhost',
     port=5672,
-    credentials=pika.PlainCredentials(username='username',password='password'),
+    credentials=pika.PlainCredentials(username='longer',password='longer'),
     heartbeat_interval=0
 )
 
+#设置每一个url尝试的次数，url_try_number,当超过这个次数后，即使url访问失败，也不再返回到rabbit中
+URL_TRY_NUMBER = 10
 
 #设置在http://club.xywy.com/keshi/1.html页面，每天问题连接页面，共有多少页。
 PAGE_NUMBER = 58
 #设置想抓取哪一年的数据，如果为None，表示抓取所有年份的数据，否则写出年份
-DATA_YEAR = '2013' #表示抓取2013年的数据
+DATA_YEAR = '2012' #表示抓取2012年的数据
 # DATA_YEAR = None #表示抓取全部年份的数据
 
 #保存最终问题的文件名称,文件将保存到本项目下result文件夹中。每次都是追加内容，不会删除之前的数据，运行爬虫需要注意
-QUESTION_SAVE_FILE = '2013_question.json'
+QUESTION_SAVE_FILE = '2012_question.json'
 
 #每次访问网站后暂停时间
 TIME_SLEEP = 3
 
-#用来存储2013年中每一天的queue和exchange信息。http://club.xywy.com/keshi/2013-11-16/1.html
+#用来存储2012年中每一天的queue和exchange信息。http://club.xywy.com/keshi/2012-11-16/1.html
 DAY_URL_QUEUE_EXCHANGE = dict(
-    exchange='2013_day_url_exchange',
-    routing_key = '2013_day_url_routing_key',
-    queue = '2013_day_url_queue',
+    exchange='2012_day_url_exchange',
+    routing_key = '2012_day_url_routing_key',
+    queue = '2012_day_url_queue',
     exchange_type='direct',
     queue_durable=True,
 )
 
-#用来存储每一个页面url的queue和exchange，页面如：http://club.xywy.com/keshi/2013-11-16/3.html
+#用来存储每一个页面url的queue和exchange，页面如：http://club.xywy.com/keshi/2012-11-16/3.html
 PAGE_URL_QUEUE_EXCHANGE = dict(
-    exchange='2013_page_url_exchange',
-    routing_key='2013_page_url_routing_key',
-    queue='2013_page_url_queue',
+    exchange='2012_page_url_exchange',
+    routing_key='2012_page_url_routing_key',
+    queue='2012_page_url_queue',
     exchange_type='direct',
     queue_durable=True,
 )
 
 #用来保存问题的queue和exchange信息。
 QUESTION_URL_QUEUE_EXCHANGE = dict(
-    exchange='2013_question_exchange',
-    routing_key='2013_question_routing_key',
-    queue='2013_question_queue',
+    exchange='2012_question_exchange',
+    routing_key='2012_question_routing_key',
+    queue='2012_question_queue',
     exchange_type='direct',
     queue_durable=True,
 )
@@ -80,7 +83,7 @@ DISEASE_URL_QUEUE_EXCHANGE = dict(
 USE_PROXY = True
 #配置ip代理服务器
 PROXIES = [
-    "http://username:password@your_proxy_ip:port/",
+
 ]
 
 
