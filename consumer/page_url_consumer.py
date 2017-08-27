@@ -26,7 +26,7 @@ class PageUrlConsumer(RabbitmqConsumer):
     def callback(self, ch, method, properties, body):
         print body
         url_count = json.loads(body)
-        get_one_page_question = GetOnePageQuestion(url_count=url_count['url'],use_proxy=use_proxy)
+        get_one_page_question = GetOnePageQuestion(url_count=url_count,use_proxy=use_proxy)
         get_one_page_question.parse()#该方法将获得的20个问题信息保存到rabbitmq服务器上对应的queue中。
         ch.basic_ack(delivery_tag=method.delivery_tag)
         print 'sleeping..',datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
