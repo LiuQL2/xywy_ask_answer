@@ -20,7 +20,7 @@ class QuestionConsumer(RabbitmqConsumer):
         super(QuestionConsumer,self).__init__(queue=queue,queue_durable=queue_durable)
 
     def callback(self,ch,method,properties, body):
-        question_file = detail_year_dir + question_save_file
+        question_file = detail_year_dir + "detail_question/" + question_save_file
         print type(body), body
         FileIO.writeToFile(text=body,filename=question_file)
         ch.basic_ack(delivery_tag=method.delivery_tag)
