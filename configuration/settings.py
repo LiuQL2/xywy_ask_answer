@@ -4,11 +4,14 @@
 # 如果没有参数没有，比如没有数据库
 import pika
 
+"""
+以下配置爬虫服务器信息，主要是RabbitMQ。
+"""
 # 数据库信息配置，这里用于连接数据库，各个属性是否必需如下
 DATABASE_INFO = dict(
     host='localhost',#数据库所在主机，必需
-    user='qianlong',#用户名，必需
-    passwd='962182',#用户密码，必需
+    user='username',#用户名，必需
+    passwd='passwd',#用户密码，必需
     database='xywy_fudan',#数据库名称，必需
     port=3306,#端口号，必需
     charset='utf8',#数据库编码方式，必需
@@ -25,48 +28,52 @@ MongoDB_INFO= dict(
 RABBITMQ_CONNECTION_PARA = pika.ConnectionParameters(
     host='localhost',
     port=5672,
-    credentials=pika.PlainCredentials(username='longer',password='longer'),
+    credentials=pika.PlainCredentials(username='username',password='password'),
     heartbeat_interval=0
 )
 
 #设置每一个url尝试的次数，url_try_number,当超过这个次数后，即使url访问失败，也不再返回到rabbit中
 URL_TRY_NUMBER = 10
 
+
+"""
+以下部分为抓取问题的简要信息而设置，包括网站上有多少问题页面、抓取问题的年份、以及保存数据的文件名、RabbitMQ里面的一些设置等。
+"""
 #设置在http://club.xywy.com/keshi/1.html页面，每天问题连接页面，共有多少页。
 PAGE_NUMBER = 58
 #设置想抓取哪一年的数据，如果为None，表示抓取所有年份的数据，否则写出年份
-DATA_YEAR = '2012' #表示抓取2012年的数据
+DATA_YEAR = '2006' #表示抓取2006年的数据
 # DATA_YEAR = None #表示抓取全部年份的数据
 
 #保存最终问题的文件名称,文件将保存到本项目下result文件夹中。每次都是追加内容，不会删除之前的数据，运行爬虫需要注意
-QUESTION_SAVE_FILE = '2012_question.json'
+QUESTION_SAVE_FILE = '2006_question.json'
 
 #每次访问网站后暂停时间
 TIME_SLEEP = 3
 
-#用来存储2012年中每一天的queue和exchange信息。http://club.xywy.com/keshi/2012-11-16/1.html
+#用来存储2006年中每一天的queue和exchange信息。http://club.xywy.com/keshi/2006-11-16/1.html
 DAY_URL_QUEUE_EXCHANGE = dict(
-    exchange='2012_day_url_exchange',
-    routing_key = '2012_day_url_routing_key',
-    queue = '2012_day_url_queue',
+    exchange='2006_day_url_exchange',
+    routing_key = '2006_day_url_routing_key',
+    queue = '2006_day_url_queue',
     exchange_type='direct',
     queue_durable=True,
 )
 
-#用来存储每一个页面url的queue和exchange，页面如：http://club.xywy.com/keshi/2012-11-16/3.html
+#用来存储每一个页面url的queue和exchange，页面如：http://club.xywy.com/keshi/2006-11-16/3.html
 PAGE_URL_QUEUE_EXCHANGE = dict(
-    exchange='2012_page_url_exchange',
-    routing_key='2012_page_url_routing_key',
-    queue='2012_page_url_queue',
+    exchange='2006_page_url_exchange',
+    routing_key='2006_page_url_routing_key',
+    queue='2006_page_url_queue',
     exchange_type='direct',
     queue_durable=True,
 )
 
 #用来保存问题的queue和exchange信息。
-QUESTION_URL_QUEUE_EXCHANGE = dict(
-    exchange='2012_question_exchange',
-    routing_key='2012_question_routing_key',
-    queue='2012_question_queue',
+QUESTION_QUEUE_EXCHANGE = dict(
+    exchange='2006_question_exchange',
+    routing_key='2006_question_routing_key',
+    queue='2006_question_queue',
     exchange_type='direct',
     queue_durable=True,
 )
@@ -79,6 +86,44 @@ DISEASE_URL_QUEUE_EXCHANGE = dict(
     queue_durable = True,
 )
 
+
+"""
+为抓取问题详细信息而设置。
+"""
+#确定需要抓取详细信息的疾病URL，其实是网站上的二级科室连接。
+DETAIL_DISEASE_URL = [
+    "http://club.xywy.com/small_346.htm"
+]
+
+#对应的年份文件夹，保存了简要信息的数据
+# DETAIL_YEAR_DIR="/Users/qianlong/Desktop/"
+DETAIL_YEAR_DIR="/Volumes/LiuQL/fudan_sds/xywy_ask/2015/"
+
+#queue和exchange信息，用来保存需要详细信息的问题URL。
+DETAIL_QUESTION_URL_QUEUE_EXCHANGE = dict(
+    exchange='detail_question_url_exchange',
+    routing_key='detail_question_url_routing_key',
+    queue='detail_question_url_queue',
+    exchange_type='direct',
+    queue_durable=True,
+)
+
+#queue和exchange信息，用来保存需要详细信息的问题URL。
+DETAIL_QUESTION_QUEUE_EXCHANGE = dict(
+    exchange='detail_question_exchange',
+    routing_key='detail_question_routing_key',
+    queue='detail_question_queue',
+    exchange_type='direct',
+    queue_durable=True,
+)
+
+
+
+
+
+"""
+代理设置。
+"""
 #是否使用代理服务器
 USE_PROXY = True
 #配置ip代理服务器

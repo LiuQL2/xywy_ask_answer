@@ -13,7 +13,7 @@ from database.IOHandler import FileIO
 from database.RabbitMQ import RabbitmqServer
 from configuration.settings import DAY_URL_QUEUE_EXCHANGE as day_queue_exchange
 from configuration.settings import PAGE_URL_QUEUE_EXCHANGE as page_queue_exchange
-from configuration.settings import QUESTION_URL_QUEUE_EXCHANGE as question_queue_exchange
+from configuration.settings import QUESTION_QUEUE_EXCHANGE as question_queue_exchange
 from configuration.settings import URL_TRY_NUMBER as url_try_number
 
 
