@@ -98,6 +98,7 @@ DETAIL_DISEASE_URL = [
 #对应的年份文件夹，保存了简要信息的数据
 # DETAIL_YEAR_DIR="/Users/qianlong/Desktop/"
 DETAIL_YEAR_DIR="/Volumes/LiuQL/fudan_sds/xywy_ask/2015/"
+DETAIL_QUESTION_SAVE_FILE="2015_detail_question.json"
 
 #queue和exchange信息，用来保存需要详细信息的问题URL。
 DETAIL_QUESTION_URL_QUEUE_EXCHANGE = dict(

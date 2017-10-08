@@ -36,6 +36,15 @@ class DetailQuestionSpider(BaseSpider):
         """
         user = {}
         user["user_id"] = self.selector.xpath('//div[@class="f12 graydeep Userinfo clearfix pl29"]/span[1]/text()')[0]
+        try:
+            user["user_gender"] = self.selector.xpath('//div[@class="f12 graydeep Userinfo clearfix pl29"]/span[3]/text()')[0]
+            user["user_gender"] = user["user_gender"].replace("\t","")
+        except:
+            user["user_gender"] = None
+        try:
+            user["user_age"] = self.selector.xpath('//div[@class="f12 graydeep Userinfo clearfix pl29"]/span[5]/text()')[0]
+        except:
+            user["user_age"] = None
         return user
 
     def __get_answer(self):

@@ -5,6 +5,8 @@ import sys
 import os
 import json
 import datetime
+sys.path.append(os.getcwd().replace("consumer",""))
+
 from database.RabbitMQ import RabbitmqConsumer
 from database.RabbitMQ import RabbitmqServer
 from configuration.settings import DETAIL_QUESTION_URL_QUEUE_EXCHANGE as question_url_queue_exchange
@@ -13,8 +15,6 @@ from configuration.settings import USE_PROXY as use_proxy
 from configuration.settings import TIME_SLEEP as time_sleep
 from spiders.GetDetailQuestionSpider import DetailQuestionSpider
 
-
-sys.path.append(os.getcwd().replace("consumer",""))
 
 class DetailQuestionUrlConsumer(RabbitmqConsumer):
     """

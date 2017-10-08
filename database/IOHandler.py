@@ -12,7 +12,7 @@ import os
 class FileIO(object):
     @staticmethod
     def writeToFile(text, filename):
-        file = open('./' + filename, 'ab+')
+        file = open(filename, 'ab+')
         file.write(text + '\n')
         file.close()
 

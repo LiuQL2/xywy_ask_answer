@@ -4,14 +4,15 @@
 import sys
 import os
 import json
+sys.path.append(os.getcwd().replace("producer",""))
 
 from configuration.settings import DETAIL_DISEASE_URL as detail_disease_url
 from configuration.settings import DETAIL_QUESTION_URL_QUEUE_EXCHANGE as question_url_queue_exchagne
 from configuration.settings import DETAIL_YEAR_DIR as data_dir
 from database.RabbitMQ import RabbitmqServer
+from database.IOHandler import FileIO
 from utilities import get_dirlist
 
-sys.path.append(os.getcwd().replace("consumer",""))
 
 
 class DetailQuestionURLProducer(object):
@@ -29,6 +30,8 @@ class DetailQuestionURLProducer(object):
             for line in data_file:
                 question = json.loads(line)
                 if question["disease_url"] in detail_disease_url:
+                    line = line.replace('\n','')
+                    print file_name, line
                     RabbitmqServer.add_message(message=line,
                                                routing_key=question_url_queue_exchagne["routing_key"],
                                                queue=question_url_queue_exchagne["queue"],
@@ -43,4 +46,6 @@ class DetailQuestionURLProducer(object):
 
 if __name__ == "__main__":
     producer = DetailQuestionURLProducer()
+    import time
+    time.sleep(5)
     producer.produce()
