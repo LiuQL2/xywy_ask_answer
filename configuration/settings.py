@@ -10,8 +10,8 @@ import pika
 # 数据库信息配置，这里用于连接数据库，各个属性是否必需如下
 DATABASE_INFO = dict(
     host='localhost',#数据库所在主机，必需
-    user='username',#用户名，必需
-    passwd='passwd',#用户密码，必需
+    user='qianlong',#用户名，必需
+    passwd='962182',#用户密码，必需
     database='xywy_fudan',#数据库名称，必需
     port=3306,#端口号，必需
     charset='utf8',#数据库编码方式，必需
@@ -26,9 +26,9 @@ MongoDB_INFO= dict(
 
 #配置运行rabbitmq的主机服务器信息
 RABBITMQ_CONNECTION_PARA = pika.ConnectionParameters(
-    host='localhost',
+    host='120.27.238.101',
     port=5672,
-    credentials=pika.PlainCredentials(username='username',password='password'),
+    credentials=pika.PlainCredentials(username='longer',password='longer'),
     heartbeat_interval=0
 )
 
@@ -129,7 +129,10 @@ DETAIL_QUESTION_QUEUE_EXCHANGE = dict(
 USE_PROXY = True
 #配置ip代理服务器
 PROXIES = [
-
+    "http://longer:longer@66.112.211.171:3128/",
+    "http://longer:longer@67.216.202.78:3128/",
+    "http://longer:longer@67.216.200.146:3128/",
+    "http://longer:longer@120.27.238.101:3128/",
 ]
 
 

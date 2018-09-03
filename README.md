@@ -1,5 +1,5 @@
 # xywy_ask_answer
-Distributed crawler for www.club.xywy.com.
+Distributed crawler for http://club.xywy.com/small_346.htm.
 # 1.爬虫说明
 该爬虫在RabbitMQ的架构之上，实现多台机器之前的通信，进而实现分布式爬虫。
 ## (1) configuration
