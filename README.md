@@ -1,5 +1,6 @@
 # xywy_ask_answer
 Distributed crawler for http://club.xywy.com/small_346.htm.
+Entry page:http://club.xywy.com/keshi/2.html
 # 1.爬虫说明
 该爬虫在RabbitMQ的架构之上，实现多台机器之前的通信，进而实现分布式爬虫。
 ## (1) configuration
@@ -23,7 +24,8 @@ day_url_producer:用来产生每一天的页面连接，保存到RabbitMQ服务�
 保存数据的目录.
 ## （7） spiders
 爬虫文件.
- * BaseSpider:基础的爬虫，实现对网站的访问等功能.
+ * BaseSpider:基础的爬虫，实现对网站的访问等功能. 这里是爬虫最基本的功能，也就是能够获取数据的脚本。其他的spider都会继承这个类来实现相应
+ 的爬虫功能，可以详细看一下这个文件代码.
  * GetDayUrlSpider:获取每一天url的爬虫.
  * ProcessDayUrlSpider:处理每一天的url，包括两部分：a.从一天url中获取这一天所有问题的页面；b.从一个页面中获取该页面下所有的问题信息.
 
