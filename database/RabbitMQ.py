@@ -9,7 +9,7 @@ import sys
 sys.path.append(os.getcwd().replace("database",""))
 
 from configuration.settings import RABBITMQ_CONNECTION_PARA as connection_parameter
-from IOHandler import FileIO
+from database.IOHandler import FileIO
 
 
 class RabbitmqServer(object):

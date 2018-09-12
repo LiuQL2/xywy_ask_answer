@@ -8,7 +8,7 @@ import sys
 import os
 sys.path.append(os.getcwd().replace("spiders",""))
 
-from BaseSpider import BaseSpider
+from spiders.BaseSpider import BaseSpider
 from database.IOHandler import FileIO
 from database.RabbitMQ import RabbitmqServer
 from configuration.settings import DAY_URL_QUEUE_EXCHANGE as day_queue_exchange

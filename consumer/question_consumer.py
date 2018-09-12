@@ -5,8 +5,8 @@ import os
 import sys
 sys.path.append(os.getcwd().replace("consumer",""))
 
-from database import RabbitmqConsumer
-from database import FileIO
+from database.RabbitMQ import RabbitmqConsumer
+from database.IOHandler import FileIO
 from configuration.settings import QUESTION_SAVE_FILE as question_save_file
 from configuration.settings import QUESTION_QUEUE_EXCHANGE as question_queue_exchange
 from configuration.settings import DATA_YEAR as data_year

@@ -3,7 +3,7 @@
 
 import traceback
 import json
-from BaseSpider import BaseSpider
+from spiders.BaseSpider import BaseSpider
 
 
 # http://club.xywy.com/static/20171007/129666667.htm

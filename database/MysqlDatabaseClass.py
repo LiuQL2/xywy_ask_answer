@@ -6,7 +6,7 @@
 
 '''
 
-# Author: Liu Qianlong <LiuQL2@163.com>
+# Author: Liu, Qianlong <LiuQL2@163.com>
 # Date: 2016.10.17
 
 import _mysql_exceptions as ___mysql_exceptions

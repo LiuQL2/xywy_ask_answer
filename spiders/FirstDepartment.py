@@ -8,7 +8,7 @@ sys.path.append(os.getcwd().replace("spiders",""))
 import traceback
 import json
 from pymongo import MongoClient
-from BaseSpider import BaseSpider
+from spiders.BaseSpider import BaseSpider
 from database.IOHandler import FileIO
 
 

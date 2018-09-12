@@ -6,7 +6,7 @@ import os
 sys.path.append(os.getcwd().replace("spiders",""))
 
 import traceback
-from BaseSpider import BaseSpider
+from spiders.BaseSpider import BaseSpider
 from database.IOHandler import FileIO
 
 class GetDayUrl(BaseSpider):
