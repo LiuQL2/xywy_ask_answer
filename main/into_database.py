@@ -5,8 +5,6 @@ import json
 import os
 import sys
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
 sys.path.append(os.getcwd().replace("main",""))
 
 from database.MysqlDatabaseClass import MySQLDatabaseClass
@@ -22,7 +20,7 @@ def into_database(file_name):
     for line in data_file:
         record = json.loads(line)
         record['file_name'] = file_name
-        print file_name,number, record
+        print(file_name,number, record)
         mysql.insert(table='question',record=record)
         index = index + 1
         number = number + 1
@@ -37,6 +35,6 @@ def into_database(file_name):
 if __name__ == '__main__':
     path = './../result/'
     file_list = os.listdir(path)
-    print file_list
+    print(file_list)
     for file_name in file_list:
         into_database(path + file_name)

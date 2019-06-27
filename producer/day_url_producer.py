@@ -35,7 +35,7 @@ class DayUrlProducer(object):
             for day_url in temp_url_list:
                 if data_year in day_url:
                     url_list.append(day_url)
-                    print day_url
+                    print(day_url)
                     url_count = {}
                     url_count['url'] = day_url
                     url_count['try_number'] = 0
@@ -48,7 +48,7 @@ class DayUrlProducer(object):
                 else:
                     pass
             first_day_url = 'http://club.xywy.com/keshi/' + data_year + '-01-01/1' + '.html'
-            print first_day_url
+            print(first_day_url)
             if first_day_url in url_list:
                 break
             else:

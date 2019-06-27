@@ -56,8 +56,8 @@ class DetailQuestionSpider(BaseSpider):
             question["user_info"] = self.__get_user_info()
             question["answer"] = self.__get_answer()
             return question
-        except Exception, e:
-            print traceback.format_exc(), e.message
+        except Exception as e:
+            print(traceback.format_exc(), e.args[0], e.args[1])
             return None
 
     def __get_user_info(self):
@@ -132,4 +132,4 @@ if __name__ == "__main__":
     url = "http://club.xywy.com/static/20171007/129665425.htm"
     spider = DetailQuestionSpider(url = url)
     question = spider.parse(question={})
-    print json.dumps(question)
+    print(json.dumps(question))

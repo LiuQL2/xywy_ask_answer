@@ -21,7 +21,7 @@ class QuestionConsumer(RabbitmqConsumer):
 
     def callback(self,ch,method,properties, body):
         question_file = '/mnt/qianlong/data/xywy/' + data_year + "/" + question_save_file
-        print type(body), body
+        print(type(body), body)
         FileIO.writeToFile(text=body,filename=question_file)
         ch.basic_ack(delivery_tag=method.delivery_tag)
 

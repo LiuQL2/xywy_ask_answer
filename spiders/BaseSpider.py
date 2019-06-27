@@ -12,8 +12,8 @@ import random
 import socket
 import sys
 import os
-import urllib2
-from urllib2 import URLError
+import urllib.request
+from urllib.error import URLError
 import traceback
 
 import lxml.etree
@@ -23,16 +23,13 @@ from configuration.settings import USER_AGENTS as user_agents
 from database.IOHandler import FileIO
 from configuration.settings import PROXIES as proxies
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
-
 
 class BaseSpider(object):
     """
     基础的爬虫类，实现user_agent的随机选取，从url到request再到需要的网页数据类型，可以转化成使用xpath提取的类型，也可以
     以string的类型获得网页源码。
     """
-    # def __init__(self):
+    # def __init__(self, *args, **kwargs):
     #     pass
 
     def get_header(self):
@@ -44,10 +41,10 @@ class BaseSpider(object):
 
     def set_proxy(self):
         proxy_temp = {'http': random.choice(proxies)}
-        proxy_handler = urllib2.ProxyHandler(proxy_temp)
-        opener = urllib2.build_opener(proxy_handler)
-        urllib2.install_opener(opener=opener)
-        print '*********',proxy_temp
+        proxy_handler = urllib.request.ProxyHandler(proxy_temp)
+        opener = urllib.request.build_opener(proxy_handler)
+        urllib.request.install_opener(opener=opener)
+        print('*********',proxy_temp)
 
     def process_url_request(self,url,try_number=20, timeout=100,xpath_type=True, whether_decode=False, encode_type='utf-8',use_proxy=False):
         """
@@ -69,7 +66,7 @@ class BaseSpider(object):
                     self.set_proxy()
                 else:
                     pass
-                request = urllib2.Request(url=url, headers=self.get_header())
+                request = urllib.request.Request(url=url, headers=self.get_header())
                 doc = self.__process_request_xpath__(request=request,timeout=timeout,whether_decode=whether_decode, encode_type=encode_type)
                 try_index = try_index + 1
                 if try_index > try_number:
@@ -79,7 +76,7 @@ class BaseSpider(object):
             return doc
         else:
             while doc == None:
-                request = urllib2.Request(url=url, headers=self.get_header())
+                request = urllib.request.Request(url=url, headers=self.get_header())
                 doc = self.__process_request__(request=request,timeout=timeout)
                 try_index = try_index + 1
                 if try_index > try_number:
@@ -97,7 +94,7 @@ class BaseSpider(object):
         :return:返回一个可以用xpath解析的selector格式。
         """
         try:
-            response = urllib2.urlopen(request,timeout=timeout)
+            response = urllib.request.urlopen(request,timeout=timeout)
             try:
                 doc = response.read()
                 response.close()
@@ -106,31 +103,31 @@ class BaseSpider(object):
                 else:
                     pass
                 doc = lxml.etree.HTML(doc)
-            except Exception, e:
-                FileIO.exceptionHandler(message=e.message)
-                print traceback.format_exc(), e.message
+            except Exception as e:
+                FileIO.exceptionHandler(message=e.args[0])
+                print(traceback.format_exc(), e.args[0])
                 doc = None
             return doc
-        except URLError, e:
+        except URLError as e:
             if hasattr(e, 'reason'):
-                print  'We failed to raach a server.'
-                print  'Reaseon: ', e.reason
+                print('We failed to raach a server.')
+                print('Reaseon: ', e.reason)
             elif hasattr(e, 'code'):
-                print  'The server could not fulfill the request.'
-                print  'Error code: ', e.code
-                print  'Reason: ', e.reason
-            FileIO.exceptionHandler(message= e.message)
-            print traceback.format_exc(), e.message
+                print('The server could not fulfill the request.')
+                print('Error code: ', e.code)
+                print('Reason: ', e.reason)
+            FileIO.exceptionHandler(message= e.reason)
+            print(traceback.format_exc(), e.reason)
             return None
-        except socket.timeout,e:
-            print 'Error code: socket timeout', e
-            FileIO.exceptionHandler(message= e.message)
-            print traceback.format_exc(), e.message
+        except socket.timeout as e:
+            print('Error code: socket timeout', e)
+            FileIO.exceptionHandler(message= e.args[0])
+            print(traceback.format_exc(), e.args[0])
             return None
-        except Exception, e:
-            FileIO.exceptionHandler(message=e.message)
-            print traceback.format_exc(), e.message
-            print 'Do Not know what is wrong.'
+        except Exception as e:
+            FileIO.exceptionHandler(message=e.args[0])
+            print(traceback.format_exc(), e.args[0])
+            print('Do Not know what is wrong.')
             return None
 
     def __process_request__(self,request,timeout = 100):
@@ -141,26 +138,27 @@ class BaseSpider(object):
         :return:返回内容，失败返回None
         """
         try:
-            response = urllib2.urlopen(request, timeout=timeout)
+            response = urllib.request.urlopen(request, timeout=timeout)
             doc = response.read()
             return doc
-        except URLError, e:
+        except URLError as e:
             if hasattr(e, 'reason'):
-                print  'We failed to raach a server.'
-                print  'Reaseon: ', e.reason
+                print('We failed to raach a server.')
+                print('Reaseon: ', e.reason)
             elif hasattr(e, 'code'):
-                print  'The server could not fulfill the request.'
-                print  'Error code: ', e.code
-                print  'Reason: ', e.reason
-            FileIO.exceptionHandler(message= e.message)
-            print traceback.format_exc(), e.message
+                print('The server could not fulfill the request.')
+                print('Error code: ', e.code)
+                print('Reason: ', e.reason)
+            FileIO.exceptionHandler(message= e.reason)
+            print(traceback.format_exc(), e.reason)
             return None
-        except socket.timeout,e:
-            print 'Error code: socket timeout'
-            FileIO.exceptionHandler(message=e.message)
-            print traceback.format_exc(), e.message
+        except socket.timeout as e:
+            print('Error code: socket timeout', e)
+            FileIO.exceptionHandler(message=e.args[0])
+            print(traceback.format_exc(), e.args[0])
             return None
-        except Exception, e:
-            print traceback.format_exc(), e.message
-            FileIO.exceptionHandler(message=e.message)
+        except Exception as e:
+            FileIO.exceptionHandler(message=e.args[0])
+            print(traceback.format_exc(), e.args[0])
+            print('Do Not know what is wrong.')
             return None

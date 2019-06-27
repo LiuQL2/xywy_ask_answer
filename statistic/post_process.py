@@ -7,8 +7,6 @@ sys.path.append(os.getcwd().replace("statistic",""))
 
 from database.IOHandler import FileIO
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
 month_list = [u'201601',u'201602',u'201603',u'201604',u'201605',u'201606',u'201607',u'201608',u'201609',u'201610',u'201611',u'201612',]
 
 
@@ -34,7 +32,7 @@ def load_file(filename):
     FileIO.writeToFile(text=line, filename='./../result/disease_count_2.csv')
     for line in file:
         line = json.loads(line)
-        print type(line),line
+        print(type(line),line)
         line = load_line(line)
         FileIO.writeToFile(text=line,filename='./../result/disease_count_2.csv')
     file.close()

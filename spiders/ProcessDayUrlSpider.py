@@ -39,12 +39,12 @@ class ProcessDayUrl(BaseSpider):
             mode = re.compile(r'\d+')
             page_numer = (mode.findall(page_numer_content)[0]).encode('utf-8')
             page_numer = int(page_numer)
-            print self.url_count['url'], type(page_numer), page_numer
+            print(self.url_count['url'], type(page_numer), page_numer)
             url_preffix = self.url_count['url'][0:len(self.url_count['url']) - 6]
             # 成功获取页面数，将页面url保存到对应的queue中
             for number in range(1, page_numer + 1, 1):
                 url = url_preffix + str(number) + '.html'
-                print 'page url:', url
+                print('page url:', url)
                 url_count = {}
                 url_count['url'] = url
                 url_count['try_number'] = 0
@@ -54,9 +54,9 @@ class ProcessDayUrl(BaseSpider):
                                           queue_durable=page_queue_exchange['queue_durable'],
                                           exchange=page_queue_exchange['exchange'],
                                           exchange_type=page_queue_exchange['exchange_type'])
-        except Exception,e:
-            print traceback.format_exc(),e.message
-            FileIO.exceptionHandler(message=traceback.format_exc() + ' ' + e.message)
+        except Exception as e:
+            print(traceback.format_exc(),e.args[0], e.args[1])
+            FileIO.exceptionHandler(message=traceback.format_exc() + ' ' + str(e.args[0]) + str(e.args[1]))
             # 本次失败且尝试次数小于10次，将这一天的url重新放回保存日期url的queue中，等待下一次尝试。
             if self.url_count['try_number'] <= url_try_number:
                 RabbitmqServer.add_message(message=json.dumps(self.url_count),
@@ -129,9 +129,9 @@ class GetOnePageQuestion(BaseSpider):
                                           queue_durable=question_queue_exchange['queue_durable'],
                                           exchange=question_queue_exchange['exchange'],
                                           exchange_type=question_queue_exchange['exchange_type'])
-        except Exception, e:
-            print traceback.format_exc(),e.message
-            FileIO.exceptionHandler(message=traceback.format_exc() + ' ' + e.message)
+        except Exception as e:
+            print(traceback.format_exc(),e.args[0], e.args[1])
+            FileIO.exceptionHandler(message=traceback.format_exc() + ' ' + str(e.args[0]) + str(e.args[1]))
             #本次尝试失败且尝试次数小于10次，将这个页面的url放回原来的queue中，待下一次尝试。
             if int(self.url_count['try_number']) <= url_try_number:
                 RabbitmqServer.add_message(message=self.url_count,

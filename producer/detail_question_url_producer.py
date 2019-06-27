@@ -22,7 +22,7 @@ class DetailQuestionURLProducer(object):
     def __init__(self):
         self.file_name_list = get_dirlist(path=data_dir,key_word_list=["question",".json"],no_key_word_list=["sample_data"])
         # self.file_name_list = get_dirlist(path=data_dir,key_word_list=["question_"])
-        print self.file_name_list
+        print(self.file_name_list)
 
     def produce(self):
         for file_name in self.file_name_list:
@@ -31,7 +31,7 @@ class DetailQuestionURLProducer(object):
                 question = json.loads(line)
                 if question["disease_url"] in detail_disease_url:
                     line = line.replace('\n','')
-                    print file_name, line
+                    print(file_name, line)
                     RabbitmqServer.add_message(message=line,
                                                routing_key=question_url_queue_exchagne["routing_key"],
                                                queue=question_url_queue_exchagne["queue"],

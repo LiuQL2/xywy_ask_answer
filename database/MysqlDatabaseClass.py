@@ -9,18 +9,14 @@
 # Author: Liu, Qianlong <LiuQL2@163.com>
 # Date: 2016.10.17
 
-import _mysql_exceptions as ___mysql_exceptions
-import MySQLdb
-import MySQLdb.cursors
+import pymysql as pymysql
+import pymysql.cursors
 import os
 import sys
-sys.path.append(os.getcwd().replace("database",""))
-reload(sys)
-sys.setdefaultencoding('utf-8')
+import traceback
+sys.path.append(os.getcwd().replace("src/database",""))
 
 from configuration.settings import DATABASE_INFO as database_info
-
-
 
 
 class MySQLDatabaseClass(object):
@@ -30,15 +26,17 @@ class MySQLDatabaseClass(object):
         :return:无返回数据
         """
         try:
-            conn = MySQLdb.connect(host=database_info['host'],
+            conn = pymysql.connect(host=database_info['host'],
                                user=database_info['user'],
                                passwd=database_info['passwd'],
                                db=database_info['database'],
                                port=database_info['port'],
                                charset=database_info['charset'])
             self.__connector = conn
-        except MySQLdb.Error, e:
-            print "Mysql Error %d: %s" % (e.args[0], e.args[1])
+        except pymysql.Error as e:
+            print(traceback.format_exc())
+            raise("Mysql Error %d: %s" % (e.args[0], e.args[1]))
+
 
     def select(self, table, record = None, database = None):
         """
@@ -71,8 +69,8 @@ class MySQLDatabaseClass(object):
                 data_tuple = cursor.fetchall()
             cursor.close()
             return self.__tuple_to_list__(table = table, data_tuple = data_tuple, database=database)
-        except MySQLdb.Error, e:
-            print "Mysql Error %d: %s" % (e.args[0], e.args[1])
+        except pymysql.Error as e:
+            print("Mysql Error %d: %s" % (e.args[0], e.args[1]))
             return list()
 
     def insert(self, table, record, database = None):
@@ -102,8 +100,8 @@ class MySQLDatabaseClass(object):
             cursor.execute(sql, values)
             self.__connector.commit()
             cursor.close()
-        except MySQLdb.Error, e:
-            print "Mysql Error %d: %s" % (e.args[0], e.args[1])
+        except pymysql.Error as e:
+            print("Mysql Error %d: %s" % (e.args[0], e.args[1]))
 
     def delete(self, table, record,database = None):
         """
@@ -128,8 +126,8 @@ class MySQLDatabaseClass(object):
             cursor.execute(sql, values)
             self.__connector.commit()
             cursor.close()
-        except MySQLdb.Error, e:
-            print "Mysql Error %d: %s" % (e.args[0], e.args[1])
+        except pymysql.Error as e:
+            print("Mysql Error %d: %s" % (e.args[0], e.args[1]))
 
     def update(self,table, record, primary_key, database = None):
         """
@@ -158,12 +156,12 @@ class MySQLDatabaseClass(object):
             sql1 = sql1[0:len(sql1) - 1]
             sql2 = sql2[0:len(sql2) - 5]
             sql = sql1 + sql2
-            print sql
+            print(sql)
             cursor.execute(sql, values)
             self.__connector.commit()
             cursor.close()
-        except MySQLdb.Error, e:
-            print "Mysql Error %d: %s" %(e.args[0], e.args[1])
+        except pymysql.Error as e:
+            print("Mysql Error %d: %s" %(e.args[0], e.args[1]))
 
     def close(self):
         """
@@ -188,8 +186,8 @@ class MySQLDatabaseClass(object):
             cursor.execute('select column_name from information_schema.columns where table_name = %s and table_schema = %s;',[table, database])
             data_tuple = cursor.fetchall()
             return data_tuple
-        except MySQLdb.Error, e:
-            print "Mysql Error %d: %s" % (e.args[0], e.args[1])
+        except pymysql.Error as e:
+            print("Mysql Error %d: %s" % (e.args[0], e.args[1]))
             return tuple()
 
     def __tuple_to_list__(self, table,database, data_tuple = tuple()):
@@ -208,16 +206,17 @@ class MySQLDatabaseClass(object):
             data_list.append(record)
         return data_list
 
+    def get_cursor(self):
+        return self.__connector.cursor()
+
 
 
 if __name__ == '__main__':
     db = MySQLDatabaseClass()
-    record = {}
-    record['post_doctor_url'] = 'http://club.xywy.com/doc_card/47794488/blog'
-    data = db.select(table = 'help_topic_post',record=record)
-    print type(data)
-    # print data
+    data = db.select(table = 'book_info')
+    print(type(data))
+    # print(data
 
     for record in data:
-        print record
+        print(record)
     db.close()

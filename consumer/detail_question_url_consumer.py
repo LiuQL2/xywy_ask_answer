@@ -41,7 +41,7 @@ class DetailQuestionUrlConsumer(RabbitmqConsumer):
                                    exchange_type=question_queue_exchange['exchange_type'])
 
         ch.basic_ack(delivery_tag=method.delivery_tag)
-        print 'sleeping..',datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        print('sleeping..',datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         self.connection.sleep(time_sleep)
 
 

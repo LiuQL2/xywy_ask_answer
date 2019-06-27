@@ -13,9 +13,6 @@ import sys
 import sqlite3
 import traceback
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
-
 
 class SQLiteDatabaseClass(object):
     def __init__(self, file_path):
@@ -57,8 +54,8 @@ class SQLiteDatabaseClass(object):
             self.__cursor.execute(sql)
             self.__connection.commit()
             self.__cursor.close()
-        except Exception,e:
-            print traceback.format_exc(), e.message
+        except Exception as e:
+            print(traceback.format_exc())
 
     def delete(self,table,record):
         """
@@ -79,8 +76,8 @@ class SQLiteDatabaseClass(object):
             cursor.execute(sql)
             self.__connection.commit()
             cursor.close()
-        except Exception, e:
-            print traceback.format_exc(), e.message
+        except Exception as e:
+            print(traceback.format_exc())
 
     def update(self,table, record, primary_key):
         """
@@ -108,8 +105,8 @@ class SQLiteDatabaseClass(object):
             cursor.execute(sql)
             self.__connection.commit()
             cursor.close()
-        except Exception,e:
-            print traceback.format_exc(), e.message
+        except Exception as e:
+            print(traceback.format_exc())
 
     def select(self, table, size = None):
         """
@@ -157,8 +154,8 @@ class SQLiteDatabaseClass(object):
             self.__cursor.execute(sql)
             self.__connection.commit()
             self.__cursor.close()
-        except Exception, e:
-            print traceback.format_exc(), e.message
+        except Exception as e:
+            print(traceback.format_exc())
 
     def table_info(self,table):
         """
@@ -203,9 +200,9 @@ if __name__ == '__main__':
     database.connect()
     values = database.select(table='edges',size=100)
     for record in values:
-        print record
+        print(record)
         for (key, value) in record.items():
-            print key, value
+            print(key, value)
     database.create_table(table_name='edge3',column_names=['id','label', 'source'],column_types=['INTEGER','TEXT','REAL'], not_null=['source', 'label'],primary_key=['id', 'label'])
     database.insert(table='edge3', record={'id':2,'label':'qianlong', 'age':3.5,'boolean':True})
     database.update(table='edge3',record={'label':'Qianlong', 'age':24, 'boolean':'yes'}, primary_key={'id':2, 'label':'Qianlong Liu'})

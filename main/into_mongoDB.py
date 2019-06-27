@@ -15,10 +15,10 @@ client = MongoClient('localhost', 27017)
 db = client.xywy
 collection = db.question1
 url_list = collection.distinct("disease_url")
-print len(url_list), url_list
+print(len(url_list), url_list)
 for url in url_list:
     if url != u'':
-        print '****', url
+        print('****', url)
         RabbitmqServer.add_message(message=url,
                                    routing_key=disease_url_queue_exchange['routing_key'],
                                    queue=disease_url_queue_exchange['queue'],

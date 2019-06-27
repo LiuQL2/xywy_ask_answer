@@ -1,1 +1,1 @@
-from day_url_producer import DayUrlProducer
+from .day_url_producer import DayUrlProducer

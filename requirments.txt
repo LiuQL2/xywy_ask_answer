@@ -1,5 +1,5 @@
-python==2.7
-pika>=1.0.1
-lxml>=4.3.3
-MySQL-python>=1.2.5
+python==3.6
+pika==1.0.1
+lxml>=4.2.1
+pymysql>=0.9.3
 pymongo>=3.8.0

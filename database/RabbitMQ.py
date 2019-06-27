@@ -8,7 +8,7 @@ import time
 import sys
 sys.path.append(os.getcwd().replace("database",""))
 
-from configuration.settings import RABBITMQ_CONNECTION_PARA as connection_parameter
+from configuration import RABBITMQ_CONNECTION_PARA as connection_parameter
 from database.IOHandler import FileIO
 
 
@@ -20,14 +20,14 @@ class RabbitmqServer(object):
     def get_connection(try_number=100):
         success = False
         for index in range(0, try_number, 1):
-            print 'number', index
+            print('get connection number', index)
             try:
                 connection = pika.BlockingConnection(connection_parameter)
                 success = True
                 return connection
-            except Exception,e:
-                print traceback.format_exc(), e.message
-                FileIO.exceptionHandler(message=traceback.format_exc() + '  ' + e.message)
+            except Exception as e:
+                print(traceback.format_exc())
+                FileIO.exceptionHandler(message=traceback.format_exc())
             if success == True:
                 break
             else:
@@ -55,7 +55,7 @@ class RabbitmqServer(object):
                                   properties=pika.BasicProperties(delivery_mode=2)
                                   # make the message persistent.
                                   )
-                print "[x] Sent %r" % message
+                print("[x] Sent %r" % message)
             else:
                 # 将message任务发送到服务器，同时为了保证每一个在做的message任务不丢失，delivery_mode参数决定将消息进行持久化。
                 channel.basic_publish(exchange=exchange,
@@ -64,11 +64,11 @@ class RabbitmqServer(object):
                                   properties=pika.BasicProperties(delivery_mode=2)
                                   # make the message persistent.
                                   )
-                print "[x] Sent %r" % message
+                # print("[x] Sent %r" % message)
             connection.close()
-        except Exception,e:
-            print traceback.format_exc(),e.message
-            FileIO.exceptionHandler(message=traceback.format_exc() + ' ' + e.message)
+        except Exception as e:
+            print(traceback.format_exc())
+            FileIO.exceptionHandler(message=traceback.format_exc())
 
     @staticmethod
     def queue_delete(queue):
@@ -77,9 +77,9 @@ class RabbitmqServer(object):
             channel = connection.channel()
             channel.queue_delete(queue=queue)
             connection.close()
-        except Exception,e:
-            print traceback.format_exc(),e.message
-            FileIO.exceptionHandler(message=traceback.format_exc() + ' ' + e.message)
+        except Exception as e:
+            print(traceback.format_exc())
+            FileIO.exceptionHandler(message=traceback.format_exc())
 
 
     @staticmethod
@@ -89,9 +89,9 @@ class RabbitmqServer(object):
             channel = connection.channel()
             channel.exchange_delete(exchange=exchange)
             connection.close()
-        except Exception,e:
-            print traceback.format_exc(),e.message
-            FileIO.exceptionHandler(message=traceback.format_exc() + ' ' + e.message)
+        except Exception as e:
+            print(traceback.format_exc())
+            FileIO.exceptionHandler(message=traceback.format_exc())
 
 
 class RabbitmqConsumer(object):
@@ -105,9 +105,9 @@ class RabbitmqConsumer(object):
                 self.channel = self.connection.channel()
                 self.channel.queue_declare(queue=queue, durable=queue_durable)
                 success = True
-            except Exception, e:
-                print traceback.format_exc(), e.message
-                FileIO.exceptionHandler(message=traceback.format_exc() + ' ' + e.message)
+            except Exception as e:
+                print(traceback.format_exc())
+                FileIO.exceptionHandler(message=traceback.format_exc())
             if success:
                 break
             else:
@@ -119,11 +119,11 @@ class RabbitmqConsumer(object):
 
 
     def callback(self, ch, method, properties, body):
-        print '[X] get url: %s' % body
+        print('[X] get url: %s' % body)
         # 每当这个任务完成之后，这个comsumer就会给RabbitMQ发送一个确认信息，确保这个任务不会因该
         # consumer的突然停止而丢失。
         ch.basic_ack(delivery_tag=method.delivery_tag)
-        print 'sleeping...'
+        print('sleeping...')
         time.sleep(5)
 
     def start_consuming(self):
@@ -134,8 +134,9 @@ class RabbitmqConsumer(object):
         self.channel.start_consuming()
 
 if __name__ == "__main__":
-    RabbitmqServer.queue_delete(queue='2013_day_url_queue')
-    # RabbitmqServer.queue_delete(queue='post_url_queue')
+    pass
+    RabbitmqServer.queue_delete(queue='2017_question_queue')
+    # RabbitmqServer.queue_delete(queue='belt_road_params_queue')
     # RabbitmqServer.queue_delete(queue='pubmed_article_queue')
 
     # connection = RabbitmqServer.get_connection()

@@ -43,6 +43,6 @@ if __name__ == '__main__':
         if url != u'':
             spider = FirstDepartment(url=url)
             first = spider.parse()
-            print '**',first
+            print('**',first)
             FileIO.writeToFile(text=json.dumps(first),filename='./../result/first_department.json')
     client.close()

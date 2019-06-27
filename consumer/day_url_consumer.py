@@ -21,7 +21,7 @@ class DayUrlConsumer(RabbitmqConsumer):
         super(DayUrlConsumer, self).__init__(queue=queue, queue_durable=queue_durable)
 
     def callback(self, ch, method, properties, body):
-        print '[X] get url: %s' % body
+        print('[X] get url: %s' % body)
         url_count = json.loads(body)
         #将该日期的url读取出来，获得该日期下所有页面的url，一个页面包含20个问题。
         process_day_url = ProcessDayUrl(url_count = url_count,use_proxy=use_proxy)
@@ -29,7 +29,7 @@ class DayUrlConsumer(RabbitmqConsumer):
         # 每当这个任务完成之后，这个comsumer就会给RabbitMQ发送一个确认信息，确保这个任务不会因该
         # consumer的突然停止而丢失。
         ch.basic_ack(delivery_tag=method.delivery_tag)
-        print 'sleeping...'
+        print('sleeping...')
         self.connection.sleep(time_sleep)
 
 
