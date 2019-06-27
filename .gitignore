@@ -3,3 +3,4 @@ result/
 **/*.py[co]
 **/*.log
 **/*.logs
+configuration/*.py
