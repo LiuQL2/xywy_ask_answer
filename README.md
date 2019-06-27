@@ -29,13 +29,18 @@ day_url_producer:用来产生每一天的页面连接，保存到RabbitMQ服务�
  * GetDayUrlSpider:获取每一天url的爬虫.
  * ProcessDayUrlSpider:处理每一天的url，包括两部分：a.从一天url中获取这一天所有问题的页面；b.从一个页面中获取该页面下所有的问题信息.
 
-# 2.使用说明
- * (1)配置好setting.py文件.
- * (2)启动RabbitMQ服务器.
- * (3)首先运行day_url_producer,且只运行一次即可,不要重复运行.
- * (4)运行day_url_producer,可以运行多个，可结束重新运行.
- * (5)运行page_url_consumer,因为page url数量太多，所以这部分工作量最大，建议运行多个改程序.
- * (6)运行quesiton_consumer,运行一个即可满足需求.
+# 2.使用说明-问题基本信息抓取
+ * (1) 配置好setting.py文件.
+ * (2) 启动RabbitMQ服务器.
+ * (3) 首先运行day_url_producer.py,且只运行一次即可,不要重复运行.
+ * (4) 运行day_url_consumer.py,可以运行多个，可结束重新运行.
+ * (5) 运行page_url_consumer.py,因为page url数量太多，所以这部分工作量最大，建议运行多个改程序.
+ * (6) 运行question_consumer.py,运行一个即可满足需求.
 
-# 3. 分布式部署
+# 3. 使用说明-问题详细信息抓取
+ * (1) 配置好setting.py文件，即指定详细问题的疾病、问题基本信息文件，以及Rabbit MQ的信息。
+ * (2) 运行detail_question_url_producer.py
+ * (3) 运行detail_question_url_consumer.py
+
+# 4. 分布式部署
 ......

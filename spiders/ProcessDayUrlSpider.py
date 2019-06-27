@@ -75,6 +75,17 @@ class ProcessDayUrl(BaseSpider):
 class GetOnePageQuestion(BaseSpider):
     """
     用来处理一个页面的url，这里一个页面有20个问题，将抓取到的问题保存到rabbitmq服务器中。
+    对于每一个问题，这里抓取到的一个例子如下：
+
+{
+  "question_url": "http://club.xywy.com/htm/2/623.htm",
+  "post_month": "2004-12",
+  "question_title": "丙肝问题",
+  "disease": "饮食营养",
+  "question_body": "慢性丙肝可以治愈吗",
+  "post_date": "2004-12-31",
+  "disease_url": "http://club.xywy.com/small_347.htm"
+}
     """
     def __init__(self,url_count,use_proxy=False):
         self.url_count = url_count

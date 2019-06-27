@@ -46,7 +46,7 @@ class RabbitmqServer(object):
             channel.queue_declare(queue=queue, durable=queue_durable)
             # 定义一个exchange，用来传输message
             if exchange != '':
-                channel.exchange_declare(exchange=exchange, type=exchange_type)
+                channel.exchange_declare(exchange=exchange, exchange_type=exchange_type)
                 channel.queue_bind(exchange=exchange, routing_key=routing_key, queue=queue)
                 # 将message任务发送到服务器，同时为了保证每一个在做的message任务不丢失，delivery_mode参数决定将消息进行持久化。
                 channel.basic_publish(exchange=exchange,
@@ -129,7 +129,8 @@ class RabbitmqConsumer(object):
     def start_consuming(self):
         # 为了让各个worker均衡负载，将prefetch_count设为1。
         self.channel.basic_qos(prefetch_count=1)  # fair dispatch.
-        self.channel.basic_consume(self.callback, queue=self.queue)
+        # self.channel.basic_consume(self.callback, queue=self.queue)
+        self.channel.basic_consume(queue=self.queue, on_message_callback=self.callback)
         self.channel.start_consuming()
 
 if __name__ == "__main__":

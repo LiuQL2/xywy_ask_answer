@@ -1,0 +1,234 @@
+[2019-06-28 00:06:00]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:00]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:00]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:00]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:01]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:01]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:01]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:01]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:01]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:01]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:01]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:02]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:02]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:02]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:02]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:02]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:02]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:03]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:03]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:03]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:03]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:03]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:04]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:04]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:04]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:05]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:05]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:06]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:06]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:06]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:06]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:06]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:07]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:07]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:07]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:07]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:07]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:07]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
+[2019-06-28 00:06:08]: 
+Traceback (most recent call last):
+  File "/Users/qianlong/Documents/Workspace/PyCharmProjects/xywy_ask_answer/database/RabbitMQ.py", line 49, in add_message
+    channel.exchange_declare(exchange=exchange, type=exchange_type)
+TypeError: exchange_declare() got an unexpected keyword argument 'type'
+ exchange_declare() got an unexpected keyword argument 'type'
