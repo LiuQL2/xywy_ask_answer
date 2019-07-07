@@ -135,7 +135,7 @@ class RabbitmqConsumer(object):
 
 if __name__ == "__main__":
     pass
-    RabbitmqServer.queue_delete(queue='2017_question_queue')
+    RabbitmqServer.queue_delete(queue='2017_day_url_queue')
     # RabbitmqServer.queue_delete(queue='belt_road_params_queue')
     # RabbitmqServer.queue_delete(queue='pubmed_article_queue')
 
